@@ -1,3 +1,2 @@
 # orange
 #LinguaQuest
-#techrush
