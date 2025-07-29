@@ -1,5 +1,6 @@
 # orange
 #LinguaQuest
+#TechRush
 Team leader name : Gargi Joshi
 Team member 1: Koyal Kembhavi
 Team member 2: Rucha Katte
