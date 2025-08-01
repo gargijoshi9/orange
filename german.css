@@ -24,17 +24,19 @@ header {
 
 header h1,
 header .title {
+  font-family: 'Jersey 10', sans-serif;
   color: #ff8800;
-  font-family: inherit;
-  font-size: 2.7rem;
+  /* font-family: inherit; */
+  font-size: 4rem;
   letter-spacing: 2px;
-  font-weight: 900;
+  font-weight: 400;
   text-transform: uppercase;
   margin-bottom: 15px;
 }
 .back {
     font-weight: bolder;
-    position: fixed;
+    /* position: fixed; */
+    position: absolute;
     top: 120px;
     left: 40px;
     background-color: #f67f09;
@@ -90,13 +92,13 @@ html:has(:target) .back {
 
 /* Position Level 2: middle, diagonally up-right */
 .level-circle.level-2 {
-  left: 110px;
+  left: 220px;
   bottom: 120px;
 }
 
 /* Position Level 3: top-right */
 .level-circle.level-3 {
-  left: 220px;
+  left: 0px;
   bottom: 240px;
 }
 
@@ -183,13 +185,22 @@ html:has(:target) .back {
   user-select: none;
 }
 
-.xp-bar,
+.xp-bar{
+  background: #ffedcc;
+  padding: 8px 18px;
+  border-radius: 30px;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 4px rgba(255,140,0,0.07);
+  margin-left: 5rem;
+}
+
 .hearts {
   background: #ffedcc;
   padding: 8px 18px;
   border-radius: 30px;
   margin-bottom: 4px;
   box-shadow: 0 1px 4px rgba(255,140,0,0.07);
+  margin-right: 5rem;
 }
 
 /* ============================= QUESTIONS ============================= */
