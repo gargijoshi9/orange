@@ -1,77 +1,74 @@
-// ---- Demo German Data for 3 Levels -----------
 const LEVELS = [
-  // Level 1: MCQ
+  // Level 1: MCQ (3 questions)
   [
     {
       type: "mcq",
-      question: "How do you say 'Good morning' in German?",
-      options: ["Guten Morgen", "Gute Nacht", "Dankeschön", "Entschuldigung"],
-      answer: "Guten Morgen"
+      question: "How do you say 'Hello' in Japanese?",
+      options: ["konnichiwa", "sayounara", "arigatou", "sumimasen"],
+      answer: "konnichiwa"
     },
     {
       type: "mcq",
-      question: "What is 'Thank you' in German?",
-      options: ["Bitte", "Hallo", "Danke", "Tschüss"],
-      answer: "Danke"
+      question: "What is 'Thank you' in Japanese?",
+      options: ["sayounara", "arigatou", "ohayou", "hai"],
+      answer: "arigatou"
     },
     {
       type: "mcq",
-      question: "How do you say 'Goodbye' in German?",
-      options: ["Auf Wiedersehen", "Hallo", "Bitte", "Ja"],
-      answer: "Auf Wiedersehen"
+      question: "How do you say 'Good morning' in Japanese?",
+      options: ["konbanwa", "ohayou", "oyasumi", "itadakimasu"],
+      answer: "ohayou"
     }
-  
   ],
-  
-  // Level 2: Matching (pairs, drag-and-drop)
+  // Level 2: Matching (3 matching questions/sets)
   [
     {
       type: "match",
       pairs: [
-        { left: "Apple", right: "Apfel" },
-        { left: "Bread", right: "Brot" },
-        { left: "Water", right: "Wasser" }
+        { left: "Water", right: "mizu" },
+        { left: "Rice", right: "gohan" },
+        { left: "Tea", right: "ocha" }
       ]
     },
     {
       type: "match",
       pairs: [
-        { left: "Dog", right: "Hund" },
-        { left: "Cat", right: "Katze" },
-        { left: "Bird", right: "Vogel" }
+        { left: "Dog", right: "inu" },
+        { left: "Cat", right: "neko" },
+        { left: "Bird", right: "tori" }
       ]
     },
     {
       type: "match",
       pairs: [
-        { left: "Car", right: "Auto" },
-        { left: "House", right: "Haus" },
-        { left: "School", right: "Schule" }
+        { left: "School", right: "gakkou" },
+        { left: "Book", right: "hon" },
+        { left: "Car", right: "kuruma" }
       ]
     }
   ],
-  // Level 3: Fill in the blank with audio
+  // Level 3: Fill in the blank + audio (3 questions) with romanized words
   [
     {
       type: "audio-fill",
-      word: "Hund",
-      question: "Type the German word you hear:",
-      audioText: "Hund",
-      answer: "Hund"
+      word: "inu",
+      question: "Type the Japanese word you hear (romanized):",
+      audioText: "inu",
+      answer: "inu"
     },
     {
       type: "audio-fill",
-      word: "Katze",
-      question: "Type the German word you hear:",
-      audioText: "Katze",
-      answer: "Katze"
+      word: "neko",
+      question: "Type the Japanese word you hear (romanized):",
+      audioText: "neko",
+      answer: "neko"
     },
     {
       type: "audio-fill",
-      word: "Vogel",
-      question: "Type the German word you hear:",
-      audioText: "Vogel",
-      answer: "Vogel"
+      word: "tori",
+      question: "Type the Japanese word you hear (romanized):",
+      audioText: "tori",
+      answer: "tori"
     }
   ]
 ];
@@ -89,6 +86,7 @@ function updateHUD() {
   xpAmount.textContent = xp;
   heartsSpan.textContent = "❤️".repeat(hearts);
 }
+
 function playFeedback(isCorrect) {
   if (isCorrect) {
     showFeedback("Correct!", true);
@@ -98,7 +96,7 @@ function playFeedback(isCorrect) {
     playSound(false);
   }
 }
-// Play audio files for feedback
+
 function playSound(isCorrect) {
   const sound = document.getElementById(isCorrect ? 'audio-correct' : 'audio-wrong');
   if (sound) {
@@ -106,8 +104,9 @@ function playSound(isCorrect) {
     sound.play();
   }
 }
+
 // TTS for audio question (Level 3)
-function ttsSpeak(text, lang='de-DE') {
+function ttsSpeak(text, lang='ja-JP') {
   if ('speechSynthesis' in window) {
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = lang;
@@ -123,6 +122,7 @@ function startApp() {
   updateHUD();
   showLevelMenu();
 }
+
 function showLevelMenu() {
   mainContent.innerHTML = `
     <div class="level-select">
@@ -144,6 +144,7 @@ function showLevelMenu() {
     </div>
   `;
 }
+
 window.goToLevel = function(levelIdx) {
   currentLevel = levelIdx;
   questionIndex = 0;
@@ -198,19 +199,14 @@ function showContinuePrompt() {
 
   document.getElementById('btnNo').onclick = () => {
     cDiv.remove();
-    // Check if ALL questions in the current level are answered
     const totalQuestions = LEVELS[currentLevel].length;
     if (questionIndex + 1 >= totalQuestions) {
-      // All questions done or this is the last
       showLevelComplete();
     } else {
-      // Not finished yet, send back to level menu (or you can stay on current question or do whatever you want)
-      // Here, I propose to go back to level menu:
       showLevelMenu();
     }
   };
 }
-
 
 function showFeedback(msg, pos, allowHTML) {
   clearFeedback();
@@ -219,6 +215,7 @@ function showFeedback(msg, pos, allowHTML) {
   if(allowHTML) fb.innerHTML = msg; else fb.textContent = msg;
   mainContent.appendChild(fb);
 }
+
 function clearFeedback() {
   [...document.querySelectorAll('.feedback')].forEach(el => el.remove());
 }
@@ -252,7 +249,7 @@ function renderMatching(q) {
   rights = rights.slice().sort(() => Math.random() - 0.5);
 
   mainContent.innerHTML = `<div class="activity" role="group" aria-label="Matching Question">
-    <div>Drag the correct German word to each English word:</div>
+    <div>Drag the correct Japanese word (romanized) to each English word:</div>
     <div class="drag-pair-wrap">
       <ul class="dd-list" id="ddLeft"></ul>
       <ul class="dd-list" id="ddRight"></ul>
@@ -351,7 +348,7 @@ function renderAudioFill(q) {
   mainContent.innerHTML = `
     <div class="activity" aria-label="Fill in the blank with audio">
       <div>${q.question}</div>
-      <button class="audio-btn" onclick="ttsSpeak('${q.audioText.replace(/'/g, "\\'")}', 'de-DE')" title="Play Audio">🔊</button>
+      <button class="audio-btn" onclick="ttsSpeak('${q.audioText.replace(/'/g, "\\'")}', 'ja-JP')" title="Play Audio">🔊</button>
       <form id="audioFillForm" autocomplete="off" style="display:inline;">
         <input class="input-blank" type="text" aria-label="Your answer" required />
         <button class="submit-btn" type="submit">Submit</button>
@@ -379,12 +376,11 @@ function showGameOver() {
     <button class="level-btn" onclick="startApp()">Back to main menu</button>
   `;
 }
+
 function showLevelComplete() {
   if (maxLevelUnlocked < currentLevel + 1 && currentLevel < 2) maxLevelUnlocked = currentLevel + 1;
 
-  // If finished Level 3 (index 2)
   if(currentLevel === 2){
-    // Save XP in session for well-done page
     sessionStorage.setItem('finalXP', xp);
     window.location.href = "last.html";
     return;
