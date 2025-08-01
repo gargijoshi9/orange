@@ -20,11 +20,13 @@
 .header {
     height: 800px;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 body {
     overflow: hidden;
+     
+    
 }
 
 /* Header Styles */
@@ -132,7 +134,7 @@ header {
     font-size: 28.625px;
     font-weight: 700;
     position: absolute;
-    left: 50%;
+    left: 22.5%;
     transform: translateX(-50%);
     top: 3px;
     width: 475.61px;
@@ -149,7 +151,7 @@ header {
     font-size: 29.625px;
     font-weight: 700;
     position: absolute;
-    left: 50%;
+    left: 1%;
     transform: translateX(-50%);
     top: 47px;
     width: 248.81px;
@@ -163,7 +165,7 @@ header {
     width: 330px;
     height: 112px;
     position: absolute;
-    left: 50%;
+    left: 10%;
     transform: translateX(-50%);
     top: 128px;
 }
@@ -301,7 +303,7 @@ header {
 
 .fruits {
     width: 30rem;
-    height: 25rem;
+    height: 24rem;
     position: absolute;
     left: 211px;
     top: 90px;
@@ -502,5 +504,5 @@ header {
 
 .get-started-button:hover {
     background-color: #ff8f1a;
-    transform: translateY(-2px);
+    transform: translateY(-2spx);
 }
