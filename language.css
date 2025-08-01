@@ -74,6 +74,36 @@ header {
   transform: rotate(180deg);
 }
 
+.back {
+    font-weight: bolder;
+    position: fixed;
+    top: 120px;
+    left: 40px;
+    background-color: #f67f09;
+    padding: 5px 5px;
+    border-radius: 8px;
+    display: block;
+    z-index: 1000;
+    transition: background-color 0.15s;
+}
+
+.back img {
+    height: 40px;
+    width: 40px;
+}
+
+html:has(:target) .back {
+    display: block;
+}
+
+.back:hover {
+    background-color: #f48b21;
+}
+
+.back:active {
+    background-color: #f4993e;
+}
+
 main {
   text-align: center;
   padding: 2rem 1rem;
