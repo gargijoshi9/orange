@@ -183,13 +183,22 @@ html:has(:target) .back {
   user-select: none;
 }
 
-.xp-bar,
+.xp-bar {
+  background: #ffedcc;
+  padding: 8px 18px;
+  border-radius: 30px;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 4px rgba(255, 140, 0, 0.07);
+  margin-left: 5rem;
+}
+
 .hearts {
   background: #ffedcc;
   padding: 8px 18px;
   border-radius: 30px;
   margin-bottom: 4px;
-  box-shadow: 0 1px 4px rgba(255,140,0,0.07);
+  box-shadow: 0 1px 4px rgba(255, 140, 0, 0.07);
+  margin-right: 5rem;
 }
 
 /* ============================= QUESTIONS ============================= */
