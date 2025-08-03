@@ -392,9 +392,9 @@ function showLevelComplete() {
   mainContent.innerHTML = `
     <div class="feedback positive">Level Complete!</div>
     <div style="margin: 15px 0; font-size:1.2em;">XP for this level: ${xp} <br> Hearts left: ${hearts}</div>
-    <button class="level-btn" onclick="showLevelMenu()">Back to level menu</button>
+    <button class="level-btn1" onclick="showLevelMenu()">Back to level menu</button>
     ${(currentLevel < 2 && maxLevelUnlocked >= currentLevel + 1)
-      ? `<button class="level-btn" onclick="goToLevel(${currentLevel + 1})">
+      ? `<button class="level-btn1" onclick="goToLevel(${currentLevel + 1})">
            Continue to Level ${currentLevel + 2}
          </button>`
       : ''
