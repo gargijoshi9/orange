@@ -32,34 +32,35 @@ header .title {
   text-transform: uppercase;
   margin-bottom: 15px;
 }
+
 .back {
-    font-weight: bolder;
-    position: fixed;
-    top: 120px;
-    left: 40px;
-    background-color: #f67f09;
-    padding: 5px 5px;
-    border-radius: 8px;
-    display: block;
-    z-index: 1000;
-    transition: background-color 0.15s;
+  font-weight: bolder;
+  position: fixed;
+  top: 120px;
+  left: 40px;
+  background-color: #f67f09;
+  padding: 5px 5px;
+  border-radius: 8px;
+  display: block;
+  z-index: 1000;
+  transition: background-color 0.15s;
 }
 
 .back img {
-    height: 40px;
-    width: 40px;
+  height: 40px;
+  width: 40px;
 }
 
 html:has(:target) .back {
-    display: block;
+  display: block;
 }
 
 .back:hover {
-    background-color: #f48b21;
+  background-color: #f48b21;
 }
 
 .back:active {
-    background-color: #f4993e;
+  background-color: #f4993e;
 }
 
 /* ======================== LEVELS & NAVIGATION ======================= */
@@ -183,13 +184,22 @@ html:has(:target) .back {
   user-select: none;
 }
 
-.xp-bar,
+.xp-bar {
+  background: #ffedcc;
+  padding: 8px 18px;
+  border-radius: 30px;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 4px rgba(255, 140, 0, 0.07);
+  margin-left: 5rem;
+}
+
 .hearts {
   background: #ffedcc;
   padding: 8px 18px;
   border-radius: 30px;
   margin-bottom: 4px;
-  box-shadow: 0 1px 4px rgba(255,140,0,0.07);
+  box-shadow: 0 1px 4px rgba(255, 140, 0, 0.07);
+  margin-right: 5rem;
 }
 
 /* ============================= QUESTIONS ============================= */
@@ -209,7 +219,7 @@ html:has(:target) .back {
   user-select: none;
 }
 
-.activity > div:first-child {
+.activity>div:first-child {
   font-size: 1.24rem;
   color: #e17000;
   text-align: center;
@@ -299,7 +309,7 @@ html:has(:target) .back {
   background-color: #1976d2;
   color: white;
   outline: none;
-  box-shadow: 0 0 8px 3px rgba(25,118,210,0.45);
+  box-shadow: 0 0 8px 3px rgba(25, 118, 210, 0.45);
 }
 
 /* FEEDBACK */
@@ -318,6 +328,7 @@ html:has(:target) .back {
   color: #1ca744;
   text-shadow: 0 1px 6px #b7e88977;
 }
+
 .negative {
   color: #da2129;
   text-shadow: 0 1px 6px #ffaaa699;
@@ -355,7 +366,8 @@ html:has(:target) .back {
   justify-content: center;
   gap: 48px;
   margin-top: 32px;
-  flex-wrap: nowrap; /* keep side by side */
+  flex-wrap: nowrap;
+  /* keep side by side */
   width: 100%;
   max-width: 520px;
   user-select: none;
@@ -402,6 +414,7 @@ html:has(:target) .back {
   color: #d35400;
   padding-left: 12px;
 }
+
 .dd-drop.dragover {
   background: #fff1cf;
   border-color: #ff8800;
@@ -420,54 +433,67 @@ html:has(:target) .back {
     max-width: 100vw;
     border-radius: 0;
   }
+
   header h1 {
     font-size: 2.0rem;
   }
+
   .level-select {
     width: 260px;
     height: 300px;
   }
+
   .level-circle {
     width: 100px;
     height: 100px;
   }
+
   .level-circle.level-2 {
     left: 85px !important;
     bottom: 100px !important;
   }
+
   .level-circle.level-3 {
     left: 170px !important;
     bottom: 200px !important;
   }
+
   .level-circle-outer {
     width: 70px;
     height: 70px;
     margin-bottom: 8px;
   }
+
   .level-star {
     font-size: 1.8em;
   }
+
   .level-label {
     font-size: 1rem;
     margin-bottom: 4px;
   }
+
   .level-btn {
     padding: 10px 32px;
     font-size: 1rem;
   }
+
   .options-grid {
     grid-template-columns: 1fr !important;
     grid-template-rows: none !important;
     gap: 14px 0 !important;
   }
+
   .drag-pair-wrap {
     flex-wrap: wrap !important;
     gap: 20px !important;
   }
+
   .dd-list {
     max-width: 100%;
     min-width: auto;
   }
+
   .mcq-btn,
   .submit-btn,
   #continuePrompt .continue-btn {
