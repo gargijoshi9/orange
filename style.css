@@ -214,6 +214,39 @@ header {
     transform: translateX(-50%) translateY(-50%);
 }
 
+.back-to-top {
+    font-weight: bolder;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: #f67f09;
+    padding: 5px 5px;
+    border-radius: 8px;
+    display: block;
+    z-index: 1000;
+    transition: background-color 0.15s;
+    border: 2px solid antiquewhite;
+}
+
+.back-to-top img {
+    height: 40px;
+    width: 40px;
+}
+
+
+html:has(:target) .back-to-top {
+    display: block;
+}
+
+.back-to-top:hover {
+    background-color: #f48b21;
+}
+
+.back-to-top:active {
+    background-color: #f4993e;
+}
+
+
 .svg {
     height: 14px;
     position: absolute;
@@ -763,25 +796,25 @@ footer {
     cursor: pointer;
     transition: transform 0.3s ease;
 } */
-    #backToTop {
+    /* #backToTop {
   font-weight: bolder;
   position: fixed;
-  /* top: 120px;
-  left: 40px; */
+  top: 120px;
+  left: 40px;
   bottom: 20px;
     right: 40px;
   background-color: #6d5735;
   padding: 5px 5px;
   border-radius: 8px;
   display: block;
-  /* z-index: 1000; */
+  z-index: 1000;
   transition: background-color 0.15s;
 }
 
 
 #backToTop:hover {
     transform: translateY(-5px);
-}
+} */
 
 /* Bottom Language Bar */
 .footer-bottom {
@@ -795,4 +828,16 @@ footer {
 .languages {
     margin-top: 10px;
     line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+
+    .back-to-top {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
 }

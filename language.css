@@ -171,30 +171,3 @@ h1 {
   color: white;
   font-size: 1.2rem;
 }
-
-@media (max-width: 768px) {
-  .brand-name {
-    font-size: 2rem;
-  }
-
-  .language-card {
-    width: 140px;
-    padding: 1rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .language-grid {
-    gap: 1.5rem;
-  }
-}
