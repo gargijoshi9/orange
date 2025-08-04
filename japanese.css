@@ -556,13 +556,12 @@ html:has(:target) .back {
 /* Responsive */
 @media (max-width: 620px) {
 .back {
-    position: relative;
-    top: 0;
-    left: 0;
-    margin: auto;
-    display: inline-flex;
-    font-size: 0.95rem;
-    padding: 6px 10px;
+    /* position: relative; */
+    margin-top: 7rem;
+    margin-left: 1rem;
+    /* display: inline-flex; */
+    /* font-size: 0.95rem; */
+    padding: 5px 6px;
     border-radius: 6px;
   }
 
