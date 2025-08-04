@@ -171,3 +171,55 @@ h1 {
   color: white;
   font-size: 1.2rem;
 }
+
+@media (max-width: 768px) {
+  .back img{
+    height:24px;
+    width: 24px;
+  }
+
+  .back{
+    top: 7rem;
+    left: 2rem;
+  }
+
+  header{
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .brand-name {
+    font-size: 3rem;
+    margin-left: 0.25rem;
+  }
+
+   h1 {
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .language-grid {
+    gap: 2rem;
+  }
+
+  .language-card {
+    width: 140px;
+    padding: 1rem;
+  }
+
+   .site-language {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    margin-top: 10px;
+    margin-right: 1.5rem;
+  }
+
+  .logo-image {
+    width: 40px;
+    height: 40px;
+}
+
+}
