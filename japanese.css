@@ -191,13 +191,49 @@ html:has(:target) .back {
   background: #ff6600;
   transform: translateY(-2px) scale(1.05);
 }
-
-
 .level-btn1:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
+/* content align center */
+.level-complete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;           /* Center all children horizontally */
+  justify-content: center;       /* Optional: vertically center if parent allows */
+  min-height: 100%;              /* Or 100vh, depending on your main container */
+  padding: 30px 0;
+}
 
+.feedback.positive {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #0a7d33;
+}
+
+.level-summary {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 32px;
+
+  padding: 18px 36px;
+  border-radius: 12px;
+}
+
+.level-btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;   /* Space between buttons */
+}
+
+.level-btn1 {
+  /* your existing button styles */
+  min-width: 200px;
+  font-size: 1em;
+}
 
 /* Locked style disables pointer and fades out */
 .level-circle.level-locked {
@@ -371,7 +407,7 @@ html:has(:target) .back {
 .feedback {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   margin: 28px 0 20px 0;
   color: #f67f09;
@@ -481,6 +517,41 @@ html:has(:target) .back {
   border-color: #65bc20 !important;
   color: #39a700 !important;
 }
+/* button gap */
+.level-btn-group {
+  display: flex;
+  flex-direction: row;       /* Horizontally stack buttons */
+  align-items: center;          /* Center buttons horizontally */
+  gap: 18px;                    /* Adjust gap as needed */
+}
+/* for game over interface */
+.gameover-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* Center horizontally */
+  justify-content: center;        /* Center vertically if you give height */
+  min-height: 60vh;               /* Optional: centers vertically in view */
+  padding: 30px 0;
+}
+
+.feedback.negative {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #d32f2f;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.xp-scored {
+  font-size: 1.2em;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.level-btn {
+  min-width: 200px;
+  font-size: 1.1em;
+}
 
 /* Responsive */
 @media (max-width: 620px) {
@@ -555,7 +626,10 @@ html:has(:target) .back {
     padding: 10px 32px;
     font-size: 1rem;
   }
-
+  .level-btn-group {
+    flex-direction: column;   /* Stack buttons vertically on mobile */
+    gap: 14px;
+  }
   .options-grid {
     grid-template-columns: 1fr !important;
     grid-template-rows: none !important;

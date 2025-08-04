@@ -371,11 +371,14 @@ function renderAudioFill(q) {
 // ========== COMPLETION ROUTINES =============
 function showGameOver() {
   mainContent.innerHTML = `
-    <div class="feedback negative">Game Over. Out of hearts!</div>
-    <div style="margin: 20px 0; font-size:1.2em;">XP scored: ${xp}</div>
-    <button class="level-btn" onclick="startApp()">Back to main menu</button>
+    <div class="gameover-container">
+      <div class="feedback negative">Game Over. Out of hearts!</div>
+      <div class="xp-scored">XP scored: ${xp}</div>
+      <button class="level-btn" onclick="startApp()">Back to main menu</button>
+    </div>
   `;
 }
+
 
 function showLevelComplete() {
   if (maxLevelUnlocked < currentLevel + 1 && currentLevel < 2) maxLevelUnlocked = currentLevel + 1;
@@ -385,17 +388,27 @@ function showLevelComplete() {
     window.location.href = "last.html";
     return;
   }
-  mainContent.innerHTML = `
+  
+ mainContent.innerHTML = `
+  <div class="level-complete-container">
     <div class="feedback positive">Level Complete!</div>
-    <div style="margin: 15px 0; font-size:1.2em;">XP for this level: ${xp} <br> Hearts left: ${hearts}</div>
-    <button class="level-btn1" onclick="showLevelMenu()">Back to level menu</button>
-    ${(currentLevel < 2 && maxLevelUnlocked >= currentLevel + 1)
-      ? `<button class="level-btn1" onclick="goToLevel(${currentLevel + 1})">
-           Continue to Level ${currentLevel + 2}
-         </button>`
-      : ''
-    }
-  `;
+    <div class="level-summary">
+      <div>XP for this level: ${xp}</div>
+      <div style="margin: 20px 0;"></div>
+      <div>Hearts left: ${hearts}</div>
+    </div>
+    <div class="level-btn-group">
+      <button class="level-btn1" onclick="showLevelMenu()">Back to level menu</button>
+      ${
+        (currentLevel < 2 && maxLevelUnlocked >= currentLevel + 1)
+          ? `<button class="level-btn1" onclick="goToLevel(${currentLevel + 1})">
+               Continue to Level ${currentLevel + 2}
+             </button>`
+          : ''
+      }
+    </div>
+  </div>
+`;
 }
 
 // ========== INIT ===========
