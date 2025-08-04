@@ -2,168 +2,124 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./vars.css">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-
-  <style>
-    a,
-    button,
-    input,
-    select,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      border: none;
-      text-decoration: none;
-      background: none;
-
-      -webkit-font-smoothing: antialiased;
-    }
-
-    menu,
-    ol,
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ORANGE</title>
-  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="icon" href="icon.png" type="image/png" />
+  <link rel="stylesheet" href="vars.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
 </head>
-<header>
-  <div class="logo">
-    <img src="icon.png" alt="Orange Logo" class="logo-image">
-    <span id="top" class="brand-name">ORANGE</span>
-  </div>
-  <div class="site-language">
-    SITE LANGUAGE : ENGLISH <span class="dropdown-arrow"></span>
-  </div>
-</header>
 
 <body>
-  <div class="header">
-    <div class="div">
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="icon.png" alt="Orange Logo" class="logo-image" />
+      <span id="top" class="brand-name">ORANGE</span>
     </div>
-    <img class="fruits" src="3.png" />
-  </div>
+    <div class="site-language">
+      SITE LANGUAGE: ENGLISH <span class="dropdown-arrow"></span>
+    </div>
+  </header>
 
-  <div class="div-3-wk-na">
-    <div class="heading-1">
-      <div class="the-free-fun-and-effective-way-to">
-        The free, fun, and effective way to
+  <!-- HERO SECTION -->
+  <main class="main-section">
+    <div class="header">
+      <img class="fruits" src="main icon .png" alt="Main Icon" />
+    </div>
+
+    <div class="hero-content">
+      <div class="heading-1">
+        <div class="the-free-fun-and-effective-way-to">
+          The free, fun, and effective way to
+        </div>
+        <div class="learn-a-language">learn a language!</div>
       </div>
-      <div class="learn-a-language">learn a language!</div>
+
+      <div class="cta-container">
+        <button class="get-started-button" onclick="location.href='language.html'">Get Started</button>
+      </div>
     </div>
+  </main>
 
-    <div class="div-1-v-6-o">
-      <button class="get-started-button" onclick="location.href='language.html'">
-        Get Started
-      </button>
-    </div>
-
-  </div>
-  </div>
-
-  <div class="div-3-i-hzb">
+  <!-- NAVIGATION -->
+  <nav class="div-3-i-hzb">
     <div class="nav">
-      <img class="svg" src="svg0.svg" />
+      <img class="svg" src="svg0.svg" alt="Menu Icon" />
       <div class="list">
-        <div class="item-link">
-          <div class="svg2"></div>
-          <div class="spanish">Spanish</div>
-        </div>
-        <div class="item-link2">
-          <div class="svg3"></div>
-          <div class="french">French</div>
-        </div>
-        <div class="item-link3">
-          <div class="svg4"></div>
-          <div class="german">German</div>
-        </div>
-        <div class="item-link4">
-          <div class="svg5"></div>
-          <div class="italian">Italian</div>
-        </div>
-        <div class="item-link5">
-          <div class="svg6"></div>
-          <div class="portuguese">Portuguese</div>
-        </div>
-        <div class="item-link6">
-          <div class="svg7"></div>
-          <div class="dutch">Dutch</div>
-        </div>
-        <div class="item-link7">
-          <div class="svg8"></div>
-          <div class="japanese">Japanese</div>
-        </div>
+        <div class="item-link"><div class="svg2"></div><div class="spanish">Spanish</div></div>
+        <div class="item-link"><div class="svg3"></div><div class="french">French</div></div>
+        <div class="item-link"><div class="svg4"></div><div class="german">German</div></div>
+        <div class="item-link"><div class="svg5"></div><div class="italian">Italian</div></div>
+        <div class="item-link"><div class="svg6"></div><div class="portuguese">Portuguese</div></div>
+        <div class="item-link"><div class="svg7"></div><div class="dutch">Dutch</div></div>
+        <div class="item-link"><div class="svg8"></div><div class="japanese">Japanese</div></div>
       </div>
-      <img class="svg9" src="svg8.svg" />
+      <img class="svg9" src="svg8.svg" alt="Menu End Icon" />
     </div>
-  </div>
+  </nav>
+
+  <!-- SECTION 1 -->
   <section class="section">
     <div class="text-content">
       <h1>Free. Fun. Effective.</h1>
       <p>
-        Learning with Orange is fun, and <strong>research shows that it works!</strong>
-        With quick, bite-sized lessons, you’ll earn points and unlock new levels while gaining real-world
-        communication skills.
+        Learning with Orange is fun, and <strong>research shows that it works!</strong> With quick, bite-sized lessons,
+        you’ll earn points and unlock new levels while gaining real-world communication skills.
       </p>
     </div>
     <div class="image-content">
-      <img src="fruit1.svg" alt="Illustration" />
-      <!-- Replace 'your-image.png' with the actual image path -->
+      <img src="illustration1.png" alt="Illustration" />
     </div>
   </section>
-  <div class="section1">
+
+  <!-- SECTION 2 -->
+  <section class="section1">
     <div class="image-block">
-      <img src="lang-science.png" alt="Language Discovery Image" />
+      <img src="lang-science.png" alt="Language Discovery" />
     </div>
     <div class="text-block1">
       <h2>Two languages Available</h2>
-      <p>We use a combination of research-backed teaching methods and delightful content to create courses that
-        effectively teach reading, writing, listening, and speaking skills. In GERMAN and JAPANESE.</p>
+      <p>
+        We use a combination of research-backed teaching methods and delightful content to create courses that
+        effectively teach reading, writing, listening, and speaking skills. In GERMAN and JAPANESE.
+      </p>
     </div>
-  </div>
+  </section>
 
-  <!-- Section 2 -->
-  <div class="section2">
+  <!-- SECTION 3 -->
+  <section class="section2">
     <div class="text-block2">
       <h2>Stay motivated</h2>
       <p>
-        We make it easy to form a habit of language learning with game-like features,
-        fun challenges, and reminders from our friendly mascot.
+        We make it easy to form a habit of language learning with game-like features, fun challenges, and reminders from
+        our friendly mascot.
       </p>
     </div>
     <div class="image-block2">
-      <img src="your-image.png" alt="Motivated Character Image">
+      <img src="your-image.png" alt="Motivated Character" />
     </div>
-  </div>
-  <div class="container">
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="container">
     <div class="image-section">
-      <img src="character1.png" alt="Character on scooter">
+      <img src="character1.png" alt="Character on Scooter" />
     </div>
     <div class="text-section">
       <h1>Personalized learning</h1>
       <p>
-        Combining the best of AI and language science, lessons are
-        tailored to help you learn at just the right level and pace.
+        Combining the best of AI and language science, lessons are tailored to help you learn at just the right level
+        and pace.
       </p>
     </div>
-  </div>
-  <!-- Footer Section -->
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-column">
@@ -183,7 +139,6 @@
           <li>Contact us</li>
         </ul>
       </div>
-
       <div class="footer-column">
         <h3>Products</h3>
         <ul>
@@ -198,7 +153,6 @@
           <li>Gift Super Duolingo</li>
         </ul>
       </div>
-
       <div class="footer-column">
         <h3>Apps</h3>
         <ul>
@@ -207,7 +161,6 @@
           <li>Orange ABC (iOS)</li>
         </ul>
       </div>
-
       <div class="footer-column">
         <h3>Help and support</h3>
         <ul>
@@ -217,14 +170,13 @@
           <li>Status</li>
         </ul>
       </div>
-
       <div class="footer-column">
         <h3>Privacy and terms</h3>
         <ul>
           <li>Community guidelines</li>
           <li>Terms</li>
           <li>Privacy</li>
-          <li>Respecting your "do not sell my personal information" rights</li>
+          <li>Do Not Sell My Info</li>
         </ul>
         <h3>Social</h3>
         <ul>
@@ -238,21 +190,13 @@
     </div>
 
     <!-- Back to Top Button -->
-     <a href="#top" class="back-to-top"><img src="arrow_up.png"></a>
-
-    <div class="footer-bottom">
-      <p>Site language:</p>
-      <div class="languages">
-        العربية हिन्दी Čeština Deutsch Ελληνικά English Español Français Magyar
-        Bahasa Indonesia Italiano 日本語 한국어 Nederlands Polski Português Română
-        Русский ไทย Tagalog Türkçe Українською Tiếng Việt 中文
-      </div>
-    </div>
+    <a href="#top" class="back-to-top" aria-label="Back to Top">
+      <img src="arrow_up.png" alt="Back to Top" />
+    </a>
   </footer>
 
   <script>
-    const backToTop = document.getElementById('backToTop');
-    backToTop.addEventListener('click', () => {
+    document.querySelector('.back-to-top')?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
