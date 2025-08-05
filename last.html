@@ -10,34 +10,156 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 100;
+            /* Ensure content is above the confetti */
+        }
+    </style>
 </head>
 
 <body>
+    <div class="confetti-wrapper">
+    </div>
+
     <div class="container">
-        <h1>Well Done!</h1>
+        <div class="text-content">
+            <h1 class="animated-text">
+                <span style="animation-delay: 0s; text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">W</span>
+                <span style="animation-delay: 0.1s;text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">e</span>
+                <span style="animation-delay: 0.2s;text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">l</span>
+                <span style="animation-delay: 0.3s;text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">l</span>
+                <span style="animation-delay: 0.4s;text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">&nbsp;</span>
+                <span style="animation-delay: 0.5s;text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">D</span>
+                <span style="animation-delay: 0.6s;text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">o</span>
+                <span style="animation-delay: 0.7s;text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">n</span>
+                <span style="animation-delay: 0.8s;text-shadow:
+-4px -4px 0 #402403
+,
+4px -4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">e</span>
+                <span style="animation-delay: 0.9s;text-shadow:
+-4px -4px 0 #402403
+,
+4px 4px 0 #402403
+,
+-4px 4px 0 #402403
+,
+4px 4px 0 #402403
+;">!</span>
+            </h1>
+            <br>
+            <h2 style="text-shadow:
+-2px -2px 0 #402403
+,
+2px -2px 0 #402403
+,
+-2px 2px 0 #402403
+,
+2px 2px 0 #402403
+;">Are you a genius ?💀</h2>
+        </div>
         <div class="buttons">
             <button class="left-btn" onclick="window.location.href='index.html'">Back to Home</button>
             <button class="right-btn" onclick="window.location.href='language.html'">Want to learn more?</button>
         </div>
     </div>
-    <div class="icon-container" id="iconBlastContainer">
-  <img src="fruit1.svg" alt="pop icon 1" class="blast-icon icon-1">
-  <img src="fruit2.png" alt="pop icon 2" class="blast-icon icon-2">
-  <img src="fruit3.png" alt="pop icon 3" class="blast-icon icon-3">
-  <!-- <img src="your-image-4.png" alt="pop icon 4" class="blast-icon icon-4"> -->
-</div>
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const iconContainer = document.getElementById('iconBlastContainer');
-            const icons = iconContainer.querySelectorAll('img');
 
-            icons.forEach((icon, index) => {
-                setTimeout(() => {
-                    icon.style.animationDelay = `${index * 0.1}s`;
-                }, 100);
-            });
-        });
+    <script>
+        const confettiWrapper = document.querySelector('.confetti-wrapper');
+        // Generate confetti
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti-piece');
+            confetti.style.left = (Math.random() * 100) + '%';
+            confetti.style.setProperty('--fall-duration', (Math.random() * 3 + 3) + 's');
+            confetti.style.setProperty('--confetti-color', getRandomColor());
+            confettiWrapper.appendChild(confetti);
+        }
+        function getRandomColor() {
+            const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
     </script>
+
 </body>
 
 </html>

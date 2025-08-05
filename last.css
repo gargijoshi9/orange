@@ -1,91 +1,206 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-  background: #ffae00;
-  background: radial-gradient(circle, rgba(255, 174, 0, 1) 0%, rgba(246, 127,9,1) 74%); /* orange */
-  color: white;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    /* Use Flexbox to center the content both horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: radial-gradient(circle, antiquewhite 20%, rgb(247, 238, 229) 80%);
+    color: white;
+    overflow: hidden; /* Prevents scrollbars from appearing */
 }
 
 .container {
-  position: relative;
-  width: 100%;
-  text-align: center;
+    /* The container should be the main content wrapper, and it needs a z-index
+       to be above the confetti. */
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Optional: Sets a max width for better readability */
+    text-align: center;
+    z-index: 100;
 }
 
 h1 {
-  font-family: 'Jersey 10', sans-serif;
-  font-weight: 400;
-  font-size: 7rem;
+    font-family: 'Jersey 10', sans-serif;
+    font-weight: 400;
+    font-size: 9rem;
+    letter-spacing: -10px;
+}
+
+.animated-text span {
+    opacity: 0;
+    transform: translateY(-20px);
+    color: #f7941d;
+    text-shadow: 2px 2px 2px antiquewhite;
+    display: inline-block;
+    animation: revealText 1s forwards, bounce 1s 1s ease-out;
+    font-family: 'Jersey 10', sans-serif;
+}
+
+.container h2 {
+    font-family: 'Jersey 10', sans-serif;
+    color: #f7941d;
+    font-weight: 400;
+    text-shadow: antiquewhite 2px 2px 2px 2px;
+    font-size: 3rem;
+    margin-top: 1rem;
+    opacity: 100%;
+    transform: translateY(-20px);
+    animation: revealText 1s forwards, bounce 1s 1s ease-out;
+}
+
+@keyframes revealText {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-5px);
+    }
+    40% {
+        transform: translateY(0);
+    }
+    60% {
+        transform: translateY(-2px);
+    }
+    80% {
+        transform: translateY(0);
+    }
 }
 
 .buttons {
-  position: absolute;
-  top: 15rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 30px;
-}
-
-.left-btn{
-    margin-left: 5rem;
-}
-
-.right-btn{
-    margin-right: 5rem;
+    /* Use Flexbox for buttons and center them horizontally.
+       Remove position: absolute; and the top, left, and right margins. */
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adds space between the buttons */
+    margin-top: 2rem; /* Adds space below the text */
 }
 
 button {
-  /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-  background-color: white;
-  color: #f7941d;
-  border: none;
-  padding: 15px 25px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
+    background-color: white;
+    color: #f7941d;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 button:hover {
-  transform: translateY(-5px);
-  background-color: #facf96;
+    transform: translateY(-5px);
+    background-color: #facf96;
 }
+
+/* Confetti wrapper must be fixed to the viewport and cover the entire screen */
+.confetti-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent interaction */
+    overflow: hidden;
+    z-index: 1; /* Puts confetti behind the main content */
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100%) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.8;
+    }
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background: var(--confetti-color, white);
+    opacity: 0.9;
+    animation: confetti-fall var(--fall-duration, 4s) linear infinite;
+    top: 0; /* Ensures confetti starts falling from the very top */
+}
+
+/* Randomize confetti properties */
+.confetti-piece:nth-child(1) {
+    left: 10%;
+    --confetti-color: white;
+    --fall-duration: 3s;
+}
+
+.confetti-piece:nth-child(2) {
+    left: 25%;
+    --confetti-color: white;
+    --fall-duration: 5s;
+}
+
+.confetti-piece:nth-child(3) {
+    left: 40%;
+    --confetti-color: white;
+    --fall-duration: 4.5s;
+}
+
+.confetti-piece:nth-child(4) {
+    left: 60%;
+    --confetti-color: white;
+    --fall-duration: 3.5s;
+}
+
+.confetti-piece:nth-child(5) {
+    left: 80%;
+    --confetti-color: white;
+    --fall-duration: 6s;
+}
+
+/* Icon styles are untouched as they seem to work fine for a fixed position */
 .icon-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
 }
 
 .blast-icon {
-  position: absolute;
-  width: 50px; /* Adjust the initial width of your images */
-  height: auto;
-  opacity: 0;
-  animation: pop-out 1s ease-out forwards;
+    position: absolute;
+    width: 50px;
+    height: auto;
+    opacity: 0;
+    animation: pop-out 1s ease-out forwards;
 }
 
-/* Define the pop-out animation */
 @keyframes pop-out {
-  0% {
-    transform: scale(0.5) translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.5) translateY(-50px) rotate(30deg);
-    opacity: 0;
-  }
+    0% {
+        transform: scale(0.5) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) translateY(-50px) rotate(30deg);
+        opacity: 0;
+    }
 }
