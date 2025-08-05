@@ -731,3 +731,162 @@ html:has(:target) .back {
     width: 90%;
   }
 }
+/* Feedback popup covering question, with animation new changes */
+.feedback-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  width: 90vw;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: rgba(50, 50, 50, 0.95);
+  color: white;
+  border-radius: 15px;
+  font-size: 2rem;
+  text-align: center;
+  z-index: 10000;
+  opacity: 0;
+  animation: fadeInOut 2s forwards;
+  pointer-events: none;
+  user-select: none;
+  transform: translateX(-50%);
+}
+
+.feedback-popup.positive {
+  background-color: rgba(46, 204, 113, 0.95);
+}
+
+.feedback-popup.negative {
+  background-color: rgba(231, 76, 60, 0.95);
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20%);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20%);
+  }
+}
+
+/* Big feedback and summary styles */
+.big-feedback {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.big-summary {
+  font-size: 2rem;
+}
+
+/* Fade-in animation */
+.animated-fade-in {
+  animation: fadeInContent 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInContent {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Undo and Submit buttons container for Level 2 (Matching) */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Undo and Submit buttons for matching */
+.undo-btn,
+.action-buttons .submit-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #f67f09;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.undo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.undo-btn:hover:not(:disabled),
+.action-buttons .submit-btn:hover:not(:disabled) {
+  background-color: #ff8f1a;
+}
+
+/* Instruction banner */
+.instruction-banner {
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: #ffe9d6;
+  border-left: 5px solid #f67f09;
+  border-radius: 8px;
+  color: #4b4b4b;
+}
+
+/* Center Submit button in Audio Fill (Level 3) */
+.audio-fill-activity form {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Centered and sized Submit button in audio fill form */
+.audio-fill-activity .submit-btn {
+  margin-top: 0.5rem;
+  width: 100px;
+  display: inline-block;
+}
+
+/* General styles for all buttons */
+.level-btn, 
+.level-btn1, 
+.submit-btn, 
+.mcq-btn, 
+.audio-btn {
+  background-color: #f67f09;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  font-family: "Inter-Bold", sans-serif;
+}
+
+.level-btn:disabled, 
+.level-btn1:disabled, 
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.level-btn:hover:not(:disabled), 
+.level-btn1:hover:not(:disabled), 
+.submit-btn:hover:not(:disabled), 
+.mcq-btn:hover, 
+.audio-btn:hover {
+  background-color: #ff8f1a;
+}
+
+
