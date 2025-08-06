@@ -427,12 +427,14 @@ function renderAudioFill(q) {
     <div class="activity audio-fill-activity" aria-label="Fill in the blank with audio">
       
       <div>${q.question}</div>
-      <button class="audio-btn" onclick="ttsSpeak('${q.audioText.replace(/'/g, "\\'")}', 'de-DE')" title="Play Audio">🔊</button>
+      
       <form id="audioFillForm" autocomplete="off" style="text-align:center; margin-top:1rem;">
+      <button class="audio-btn" onclick="ttsSpeak('${q.audioText.replace(/'/g, "\\'")}', 'de-DE')" title="Play Audio">🔊</button>
         <input class="input-blank" type="text" aria-label="Your answer" required />
         <br />
         <button class="submit-btn" type="submit" style="margin-top:0.5rem; width: 100px;">Submit</button>
       </form>
+      
     </div>
   `;
   const form = document.getElementById('audioFillForm');
