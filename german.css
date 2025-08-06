@@ -507,9 +507,9 @@ html:has(:target) .back {
 }
 
 .dd-matched {
-  background: #e8ffd2 !important;
-  border-color: #65bc20 !important;
-  color: #39a700 !important;
+  background: #fff1cf !important;
+  border-color: #ff8800 !important;
+  color: #ff8800 !important;
 }
 /* button gap */
 .level-btn-group {
