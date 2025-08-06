@@ -312,7 +312,7 @@ function renderMatching(q) {
         <ul class="dd-list" id="ddRight"></ul>
       </div>
       <div class="action-buttons">
-        <button class="undo-btn" id="btnUndo" disabled>Undo Last</button>
+        <button class="undo-btn" id="btnUndo" disabled>Undo</button>
         <!-- Submit button will be appended here -->
       </div>
     </div>
