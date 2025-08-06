@@ -29,6 +29,8 @@
 </head>
 
 <body>
+    <audio id="success-sound" src="mixkit-fantasy-game-success-notification-270.wav" preload="auto"></audio>
+
     <div class="confetti-wrapper">
     </div>
 
@@ -136,14 +138,9 @@
 ,
 2px 2px 0 #402403
 ;">Are you a genius ?💀</h2>
-        <!-- </div> -->
-        <!-- <div class="buttons"> -->
-            <button class="left-btn" onclick="window.location.href='index.html'">Back to Home</button>
+        <button class="left-btn" onclick="window.location.href='index.html'">Back to Home</button>
             <button class="right-btn" onclick="window.location.href='language.html'">Want to learn more?</button>
-        <!-- </div> -->
-    <!-- </div> -->
-
-    <script>
+        <script>
         const confettiWrapper = document.querySelector('.confetti-wrapper');
         // Generate confetti
         for (let i = 0; i < 50; i++) {
@@ -158,6 +155,14 @@
             const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4'];
             return colors[Math.floor(Math.random() * colors.length)];
         }
+
+        // Play the sound effect when the page loads
+        window.addEventListener('load', () => {
+            const successSound = document.getElementById('success-sound');
+            if (successSound) {
+                successSound.play();
+            }
+        });
     </script>
 
 </body>
