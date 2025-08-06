@@ -14,7 +14,8 @@ body {
     margin: 0;
     background: radial-gradient(circle, antiquewhite 20%, rgb(247, 238, 229) 80%);
     color: white;
-    overflow: hidden; /* Prevents scrollbars from appearing */
+    overflow: hidden;
+    /* Prevents scrollbars from appearing */
 }
 
 .container {
@@ -22,7 +23,8 @@ body {
        to be above the confetti. */
     position: relative;
     width: 100%;
-    max-width: 800px; /* Optional: Sets a max width for better readability */
+    max-width: 800px;
+    /* Optional: Sets a max width for better readability */
     text-align: center;
     z-index: 100;
 }
@@ -61,6 +63,7 @@ h1 {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -68,19 +71,24 @@ h1 {
 }
 
 @keyframes bounce {
+
     0%,
     100% {
         transform: translateY(0);
     }
+
     20% {
         transform: translateY(-5px);
     }
+
     40% {
         transform: translateY(0);
     }
+
     60% {
         transform: translateY(-2px);
     }
+
     80% {
         transform: translateY(0);
     }
@@ -91,25 +99,40 @@ h1 {
        Remove position: absolute; and the top, left, and right margins. */
     display: flex;
     justify-content: center;
-    gap: 20px; /* Adds space between the buttons */
-    margin-top: 2rem; /* Adds space below the text */
+    gap: 20px;
+    /* Adds space between the buttons */
+    margin-top: 2rem;
+    /* Adds space below the text */
 }
 
-button {
-    background-color: white;
-    color: #f7941d;
+.left-btn,
+.right-btn {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #f7941d;
+    color: #402403;
     border: none;
     padding: 15px 25px;
-    font-size: 1rem;
+    font-size: 1.24rem;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
+    margin-top: 4rem;
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
-button:hover {
+.left-btn:hover,
+.right-btn:hover {
     transform: translateY(-5px);
-    background-color: #facf96;
+    background-color: #f5ac4c;
+}
+
+.left-btn:active,
+.right-btn:active {
+    background-color: #fbbc6a;
+}
+
+.left-btn {
+    margin-right: 20rem;
 }
 
 /* Confetti wrapper must be fixed to the viewport and cover the entire screen */
@@ -119,9 +142,11 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Prevent interaction */
+    pointer-events: none;
+    /* Prevent interaction */
     overflow: hidden;
-    z-index: 1; /* Puts confetti behind the main content */
+    z-index: 1;
+    /* Puts confetti behind the main content */
 }
 
 @keyframes confetti-fall {
@@ -129,6 +154,7 @@ button:hover {
         transform: translateY(-100%) rotate(0deg);
         opacity: 1;
     }
+
     100% {
         transform: translateY(100vh) rotate(360deg);
         opacity: 0.8;
@@ -142,7 +168,8 @@ button:hover {
     background: var(--confetti-color, white);
     opacity: 0.9;
     animation: confetti-fall var(--fall-duration, 4s) linear infinite;
-    top: 0; /* Ensures confetti starts falling from the very top */
+    top: 0;
+    /* Ensures confetti starts falling from the very top */
 }
 
 /* Randomize confetti properties */
@@ -199,8 +226,50 @@ button:hover {
         transform: scale(0.5) translateY(0);
         opacity: 1;
     }
+
     100% {
         transform: scale(1.5) translateY(-50px) rotate(30deg);
         opacity: 0;
+    }
+}
+
+/* h1 {
+    font-size: clamp(2.5rem, 8vw, 9rem);
+    letter-spacing: -0.1em;
+    line-height: 1.1;
+} */
+
+.container h2 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+} */
+
+.left-btn,
+.right-btn {
+    width: 80%;
+    max-width: 300px;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    /* .buttons {
+        flex-direction: row;
+        justify-content: center;
+    } */
+
+    .left-btn,
+    .right-btn {
+        width: auto;
+        font-size: 1.25rem;
+        padding: 1rem 2rem;
     }
 }
