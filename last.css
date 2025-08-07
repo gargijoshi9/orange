@@ -134,6 +134,13 @@ h1 {
 .left-btn {
     margin-right: 20rem;
 }
+.button-container {
+  display: flex;
+  justify-content: space-between; /* or center / flex-start depending on desired spacing */
+  gap: 20px; /* spacing between buttons */
+  padding: 20px;
+}
+
 
 /* Confetti wrapper must be fixed to the viewport and cover the entire screen */
 .confetti-wrapper {
