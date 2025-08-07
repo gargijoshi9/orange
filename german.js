@@ -449,11 +449,12 @@ function renderAudioFill(q) {
     afterAnswered(val.toLowerCase() === q.answer.toLowerCase(), q.answer);
   };
 }
+let confettiIntervalId; // Global so we can clear it later
 
 function showLevelComplete() {
   if (maxLevelUnlocked < currentLevel + 1 && currentLevel < 2) maxLevelUnlocked = currentLevel + 1;
 
-  if(currentLevel === 2){
+  if (currentLevel === 2) {
     sessionStorage.setItem('finalXP', xp);
     window.location.href = "last.html";
     return;
@@ -461,30 +462,65 @@ function showLevelComplete() {
 
   mainContent.innerHTML = `
     <div class="level-complete-container animated-fade-in">
+      <div class="confetti-wrapper"></div>
       <div class="feedback positive big-feedback">Level Complete!</div>
       <div class="level-summary big-summary">
-        <div><strong>XP earned:</strong> ${xp}</div>
+        <div>XP earned: ${xp}</div>
         <div style="margin: 20px 0;"></div>
-        <div><strong>Hearts left:</strong> ${"❤️".repeat(hearts)}</div>
+        <div>Hearts left: ${"❤️".repeat(hearts)}</div>
       </div>
       <div class="level-btn-group">
-        <button class="level-btn1" onclick="showLevelMenu()">Back to level menu</button>
+        <button class="level-btn1" onclick="stopConfetti(); showLevelMenu()">Back to level menu</button>
         ${
           (currentLevel < 2 && maxLevelUnlocked >= currentLevel + 1)
-            ? `<button class="level-btn1" onclick="goToLevel(${currentLevel + 1})">
+            ? `<button class="level-btn1" onclick="stopConfetti(); goToLevel(${currentLevel + 1})">
                  Continue to Level ${currentLevel + 2}
                </button>`
             : ''
         }
       </div>
+      <audio id="success-sound" src="success.mp3" preload="auto"></audio>
     </div>
   `;
+
+  const confettiWrapper = document.querySelector('.confetti-wrapper');
+
+  confettiIntervalId = setInterval(() => {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti-piece');
+    confetti.style.left = Math.random() * 100 + '%';
+    confetti.style.setProperty('--fall-duration', (Math.random() * 3 + 3) + 's');
+    confetti.style.setProperty('--confetti-color', getRandomColor());
+    confettiWrapper.appendChild(confetti);
+
+    // Clean up old confetti
+    setTimeout(() => {
+      confetti.remove();
+    }, 4000);
+  }, 100); // drop one every 100ms
+
+   const successSound = document.getElementById('success-sound');
+if (successSound) {
+  successSound.play().catch((e) => {
+    console.warn("Auto-play blocked by browser:", e);
+  });
 }
+}
+
+function getRandomColor() {
+  const colors = ['#ff6347', '#ffa500', '#32cd32', '#1e90ff', '#ff69b4'];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function stopConfetti() {
+  clearInterval(confettiIntervalId);
+}
+
 
 function showGameOver() {
   mainContent.innerHTML = `
     <div class="gameover-container animated-fade-in">
-      <div class="feedback negative big-feedback">Game Over. Out of hearts!</div>
+      <div class="feedback negative big-feedback">Game Over <br/> Out of hearts!</div>
       <div class="xp-scored big-summary">XP scored: ${xp}</div>
       <button class="level-btn" onclick="startApp()">Back to main menu</button>
     </div>
