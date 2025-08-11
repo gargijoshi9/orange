@@ -1,3 +1,4 @@
+/* ===== Reset ===== */
 * {
     margin: 0;
     padding: 0;
@@ -5,8 +6,8 @@
     font-family: 'Arial', sans-serif;
 }
 
+/* ===== Light Mode Body ===== */
 body {
-    /* Use Flexbox to center the content both horizontally and vertically */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,21 +15,25 @@ body {
     margin: 0;
     background: radial-gradient(circle, antiquewhite 20%, rgb(247, 238, 229) 80%);
     color: white;
-    overflow: hidden;
-    /* Prevents scrollbars from appearing */
+    overflow: hidden; /* Prevents scrollbars */
 }
 
+/* ===== Dark Mode Base ===== */
+body.dark-mode {
+  background: radial-gradient(circle, #1c1c1c 20%, #0e0e0e 80%) !important;
+  color: #f1f1f1;
+}
+
+/* ===== Container ===== */
 .container {
-    /* The container should be the main content wrapper, and it needs a z-index
-       to be above the confetti. */
     position: relative;
     width: 100%;
     max-width: 800px;
-    /* Optional: Sets a max width for better readability */
     text-align: center;
     z-index: 100;
 }
 
+/* ===== Headings ===== */
 h1 {
     font-family: 'Jersey 10', sans-serif;
     font-weight: 400;
@@ -58,56 +63,30 @@ h1 {
     animation: revealText 1s forwards, bounce 1s 1s ease-out;
 }
 
+/* ===== Animations ===== */
 @keyframes revealText {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    20% {
-        transform: translateY(-5px);
-    }
-
-    40% {
-        transform: translateY(0);
-    }
-
-    60% {
-        transform: translateY(-2px);
-    }
-
-    80% {
-        transform: translateY(0);
-    }
+    0%,100% { transform: translateY(0); }
+    20% { transform: translateY(-5px); }
+    40% { transform: translateY(0); }
+    60% { transform: translateY(-2px); }
+    80% { transform: translateY(0); }
 }
 
-.buttons {
-    /* Use Flexbox for buttons and center them horizontally.
-       Remove position: absolute; and the top, left, and right margins. */
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    /* Adds space between the buttons */
-    margin-top: 2rem;
-    /* Adds space below the text */
+/* ===== Button Layout ===== */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
 }
 
 .left-btn,
 .right-btn {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
     background-color: #f7941d;
     color: #402403;
     border: none;
@@ -119,107 +98,51 @@ h1 {
     margin-top: 4rem;
     transition: transform 0.3s ease, background 0.3s ease;
 }
-
 .left-btn:hover,
 .right-btn:hover {
     transform: translateY(-5px);
     background-color: #f5ac4c;
 }
-
 .left-btn:active,
 .right-btn:active {
     background-color: #fbbc6a;
 }
 
-.left-btn {
-    margin-right: 20rem;
-}
-.button-container {
-  display: flex;
-  justify-content: space-between; /* or center / flex-start depending on desired spacing */
-  gap: 20px; /* spacing between buttons */
-  padding: 20px;
-}
-
-
-/* Confetti wrapper must be fixed to the viewport and cover the entire screen */
+/* ===== Confetti ===== */
 .confetti-wrapper {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     pointer-events: none;
-    /* Prevent interaction */
     overflow: hidden;
     z-index: 1;
-    /* Puts confetti behind the main content */
 }
-
-@keyframes confetti-fall {
-    0% {
-        transform: translateY(-100%) rotate(0deg);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0.8;
-    }
-}
-
 .confetti-piece {
     position: absolute;
-    width: 10px;
-    height: 20px;
+    width: 10px; height: 20px;
     background: var(--confetti-color, white);
     opacity: 0.9;
     animation: confetti-fall var(--fall-duration, 4s) linear infinite;
     top: 0;
-    /* Ensures confetti starts falling from the very top */
 }
-
-/* Randomize confetti properties */
-.confetti-piece:nth-child(1) {
-    left: 10%;
-    --confetti-color: white;
-    --fall-duration: 3s;
+@keyframes confetti-fall {
+    0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0.8; }
 }
+.confetti-piece:nth-child(1) { left: 10%; --confetti-color: white; --fall-duration: 3s; }
+.confetti-piece:nth-child(2) { left: 25%; --confetti-color: white; --fall-duration: 5s; }
+.confetti-piece:nth-child(3) { left: 40%; --confetti-color: white; --fall-duration: 4.5s; }
+.confetti-piece:nth-child(4) { left: 60%; --confetti-color: white; --fall-duration: 3.5s; }
+.confetti-piece:nth-child(5) { left: 80%; --confetti-color: white; --fall-duration: 6s; }
 
-.confetti-piece:nth-child(2) {
-    left: 25%;
-    --confetti-color: white;
-    --fall-duration: 5s;
-}
-
-.confetti-piece:nth-child(3) {
-    left: 40%;
-    --confetti-color: white;
-    --fall-duration: 4.5s;
-}
-
-.confetti-piece:nth-child(4) {
-    left: 60%;
-    --confetti-color: white;
-    --fall-duration: 3.5s;
-}
-
-.confetti-piece:nth-child(5) {
-    left: 80%;
-    --confetti-color: white;
-    --fall-duration: 6s;
-}
-
-/* Icon styles are untouched as they seem to work fine for a fixed position */
+/* ===== Icon Animation ===== */
 .icon-container {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9999;
 }
-
 .blast-icon {
     position: absolute;
     width: 50px;
@@ -227,57 +150,121 @@ h1 {
     opacity: 0;
     animation: pop-out 1s ease-out forwards;
 }
-
 @keyframes pop-out {
-    0% {
-        transform: scale(0.5) translateY(0);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(1.5) translateY(-50px) rotate(30deg);
-        opacity: 0;
-    }
+    0% { transform: scale(0.5) translateY(0); opacity: 1; }
+    100% { transform: scale(1.5) translateY(-50px) rotate(30deg); opacity: 0; }
 }
 
-/* h1 {
-    font-size: clamp(2.5rem, 8vw, 9rem);
-    letter-spacing: -0.1em;
-    line-height: 1.1;
-} */
-
-.container h2 {
-    font-size: clamp(1.5rem, 5vw, 3rem);
+/* ===== Dark Mode Toggle Button ===== */
+#darkModeToggle {
+  position: fixed;
+  top: 20px; right: 20px;
+  background: #f67f09;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 42px; height: 42px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 2000;
+}
+#darkModeToggle:hover {
+  background: #f48b21;
+  transform: scale(1.05);
+}
+#darkModeToggle:active {
+  background: #f4993e;
+  transform: scale(0.95);
+}
+body.dark-mode #darkModeToggle {
+  background: #ffaa4c;
+  color: #121212;
+}
+body.dark-mode #darkModeToggle:hover {
+  background: #ffb866;
 }
 
-/* .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2.5rem;
-} */
-
-.left-btn,
-.right-btn {
-    width: 80%;
-    max-width: 300px;
-    padding: 0.8rem 1.2rem;
-    font-size: 1rem;
-    text-align: center;
+/* ===== DARK MODE OVERRIDES ===== */
+body.dark-mode h1,
+body.dark-mode h2 {
+  text-shadow: none !important;
+  color: #ffaa4c;
+}
+body.dark-mode .animated-text span {
+  color: #ffaa4c;
+  text-shadow: 2px 2px 2px #f7f2f2;
+}
+body.dark-mode .container h2 {
+  color: #ffaa4c;
+  text-shadow: 2px 2px 2px #222;
+}
+body.dark-mode .left-btn,
+body.dark-mode .right-btn {
+  background: #ffaa4c;
+  color: #121212;
+}
+body.dark-mode .left-btn:hover,
+body.dark-mode .right-btn:hover {
+  background: #ffb866;
+}
+body.dark-mode .confetti-piece {
+  opacity: 0.9;
+  --confetti-color: #ffaa4c;
 }
 
-@media (min-width: 768px) {
-    /* .buttons {
-        flex-direction: row;
-        justify-content: center;
-    } */
-
-    .left-btn,
-    .right-btn {
-        width: auto;
-        font-size: 1.25rem;
-        padding: 1rem 2rem;
-    }
+/* ===== DARK MODE BASE ===== */
+body.dark-mode {
+  /* Softer dark grey gradient instead of pitch black */
+  background: radial-gradient(circle, #2a2a2a 20%, #1a1a1a 80%) !important;
+  color: #f1f1f1;
 }
 
+/* Headings in dark mode - white outline (text-shadow) */
+body.dark-mode h1,
+body.dark-mode h2 {
+  color: #ffaa4c; /* Keep warm orange text */
+  text-shadow:
+    -2px -2px 0 #ffffff,
+     2px -2px 0 #ffffff,
+    -2px  2px 0 #ffffff,
+     2px  2px 0 #ffffff; /* White border effect */
+}
+
+/* Animated text inside h1 */
+body.dark-mode .animated-text span {
+  color: #ffaa4c;
+  text-shadow:
+    -2px -2px 0 #ffffff,
+     2px -2px 0 #ffffff,
+    -2px  2px 0 #ffffff,
+     2px  2px 0 #ffffff;
+}
+
+/* Subheading */
+body.dark-mode .container h2 {
+  color: #ffaa4c;
+  text-shadow:
+    -2px -2px 0 #ffffff,
+     2px -2px 0 #ffffff,
+    -2px  2px 0 #ffffff,
+     2px  2px 0 #ffffff;
+}
+
+/* Buttons adapt to warm dark theme */
+body.dark-mode .left-btn,
+body.dark-mode .right-btn {
+  background: #ffaa4c;
+  color: #121212;
+}
+body.dark-mode .left-btn:hover,
+body.dark-mode .right-btn:hover {
+  background: #ffb866;
+}
+
+/* Confetti orange in dark mode */
+body.dark-mode .confetti-piece {
+  opacity: 0.9;
+  --confetti-color: #ffaa4c;
+}

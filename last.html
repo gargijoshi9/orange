@@ -29,6 +29,7 @@
 </head>
 
 <body>
+    <button id="darkModeToggle">🌙</button>
     <audio id="success-sound" src="mixkit-fantasy-game-success-notification-270.wav" preload="auto"></audio>
 
     <div class="confetti-wrapper">
@@ -166,6 +167,23 @@
                 successSound.play();
             }
         });
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("darkModeToggle");
+  const darkModeSetting = localStorage.getItem("darkMode");
+
+  if (darkModeSetting === "enabled") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const enabled = document.body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", enabled ? "enabled" : "disabled");
+    toggleBtn.textContent = enabled ? "☀️" : "🌙";
+  });
+});
+
     </script>
 
 </body>
