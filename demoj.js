@@ -1,67 +1,96 @@
 (() => {
   "use strict";
 
-  // --- GERMAN VOCABULARY (ROMANIZED) ---
+  // --- Change header & button text to Romanized Japanese when DOM is ready ---
+  document.addEventListener("DOMContentLoaded", () => {
+    // Header title
+    const headerTitle = document.querySelector("header h1");
+    if (headerTitle) {
+      headerTitle.textContent = "Learn Japanese basics"; 
+    }
+
+    // Nav button aria-labels
+    const prevBtnEl = document.getElementById("prevBtn");
+    if (prevBtnEl) {
+      prevBtnEl.setAttribute("aria-label", "Mae no Tango"); // Previous word
+    }
+    const nextBtnEl = document.getElementById("nextBtn");
+    if (nextBtnEl) {
+      nextBtnEl.setAttribute("aria-label", "Tsugi no Tango"); // Next word
+    }
+
+    // Action buttons
+    const homeBtn = document.getElementById("homeBtn");
+    if (homeBtn) {
+      homeBtn.textContent = "⬅ Back to Home Page"; 
+    }
+    const continueBtn = document.getElementById("continueBtn");
+    if (continueBtn) {
+      continueBtn.textContent = "Continue to Game ➡"; 
+    }
+  });
+
+  // --- JAPANESE VOCABULARY (ROMAJI) ---
   const VOCABULARY = [
     {
       english: "Dog",
-      german: "Hund",
+      japanese: "Inu",
       image: "assets/dog.jpg",
-      instruction: "'Hund' (hoond) is the German word for Dog."
+      instruction: "'Inu' is the Japanese word for Dog."
     },
     {
       english: "Cat",
-      german: "Katze",
+      japanese: "Neko",
       image: "assets/cat.jpg",
-      instruction: "'Katze' (kaht-ze) is the German word for Cat."
+      instruction: "'Neko' is the Japanese word for Cat."
     },
     {
       english: "Apple",
-      german: "Apfel",
+      japanese: "Ringo",
       image: "assets/apple.jpg",
-      instruction: "'Apfel' (ahp-fel) is the German word for Apple."
+      instruction: "'Ringo' is the Japanese word for Apple."
     },
     {
       english: "House",
-      german: "Haus",
+      japanese: "Ie",
       image: "assets/house.jpg",
-      instruction: "'Haus' (hows) is the German word for House."
+      instruction: "'Ie' is the Japanese word for House."
     },
     {
       english: "Car",
-      german: "Auto",
+      japanese: "Kuruma",
       image: "assets/car.jpg",
-      instruction: "'Auto' (ow-toh) is the German word for Car."
-    },
-    {
-      english: "Bird",
-      german: "Vogel",
-      image: "assets/bird.jpg",
-      instruction: "'Vogel' (foh-gel) is the German word for Bird."
-    },
-    {
-      english: "Thank You",
-      german: "Danke",
-      image: "assets/thankyou.jpg",
-      instruction: "'Danke' (dahn-ke) is the German way to say Thank You."
+      instruction: "'Kuruma' is the Japanese word for Car."
     },
     {
       english: "Good Morning",
-      german: "Guten Morgen",
+      japanese: "Ohayou",
       image: "assets/goodmorning.jpg",
-      instruction: "'Guten Morgen' (goo-ten mor-gen) is the German way to say Good Morning."
+      instruction: "'Ohayou' is the Japanese way to say Good Morning."
     },
     {
-      english: "School",
-      german: "Schule",
-      image: "assets/school.jpg",
-      instruction: "'Schule' (shoo-le) is the German word for School."
+      english: "Thank You",
+      japanese: "Arigatou",
+      image: "assets/thankyou.jpg",
+      instruction: "'Arigatou' is the Japanese way to say Thank You."
     },
     {
       english: "Sorry",
-      german: "Entschuldigung",
+      japanese: "Sumimasen",
       image: "assets/sorry.jpg",
-      instruction: "'Entschuldigung' (ent-shool-dee-goong) is the German way to say Sorry."
+      instruction: "'Sumimasen' is the Japanese way to say Sorry."
+    },
+    {
+      english: "School",
+      japanese: "Gakkou",
+      image: "assets/school.jpg",
+      instruction: "'Gakkou' is the Japanese word for School."
+    },
+    {
+      english: "Bird",
+      japanese: "Tori",
+      image: "assets/bird.jpg",
+      instruction: "'Tori' is the Japanese word for Bird."
     }
   ];
 
@@ -92,12 +121,15 @@
     const card = document.createElement("div");
     card.className = "card";
     card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-label", `Vocabulary: ${vocab.english}, German: ${vocab.german}`);
+    card.setAttribute(
+      "aria-label",
+      `Vocabulary: ${vocab.english}, Japanese (romaji): ${vocab.japanese}`
+    );
 
     card.innerHTML = `
       <img src="${vocab.image}" alt="${vocab.english} image" />
       <div class="word-english">${vocab.english}</div>
-      <div class="word-german">${vocab.german}</div>
+      <div class="word-japanese">${vocab.japanese}</div>
       <div class="word-instruction">${vocab.instruction}</div>
     `;
 
@@ -111,6 +143,7 @@
     if (newIndex < 0) newIndex = VOCABULARY.length - 1;
     if (newIndex >= VOCABULARY.length) newIndex = 0;
 
+    // --- First load (no animation) ---
     if (direction === null) {
       carouselContainer.innerHTML = "";
       const card = createCard(VOCABULARY[newIndex]);
@@ -123,6 +156,7 @@
       return;
     }
 
+    // --- Animated Card Change ---
     isAnimating = true;
     const outgoingCard = carouselContainer.querySelector(".card");
     const incomingCard = createCard(VOCABULARY[newIndex]);
@@ -149,33 +183,38 @@
     incomingCard.style.transform = "translateX(0)";
     incomingCard.style.opacity = "1";
 
-    incomingCard.addEventListener("transitionend", () => {
-      if (outgoingCard) {
-        carouselContainer.removeChild(outgoingCard);
-      }
-      currentIndex = newIndex;
-      updateProgress();
-      isAnimating = false;
-      incomingCard.focus();
-    }, { once: true });
+    incomingCard.addEventListener(
+      "transitionend",
+      () => {
+        if (outgoingCard) {
+          carouselContainer.removeChild(outgoingCard);
+        }
+        currentIndex = newIndex;
+        updateProgress();
+        isAnimating = false;
+        incomingCard.focus();
+      },
+      { once: true }
+    );
   }
 
-  // Update progress
+  // Update progress text
   function updateProgress() {
     progressIndicator.textContent = `Word ${currentIndex + 1} of ${VOCABULARY.length}`;
   }
 
-  // Navigation setup
+  // Set up event listeners for navigation
   function setupNavigation() {
     prevBtn.addEventListener("click", () => {
       showCard(currentIndex - 1, "prev");
     });
+
     nextBtn.addEventListener("click", () => {
       showCard(currentIndex + 1, "next");
     });
   }
 
-  // Init
+  // Initialize everything
   function init() {
     initTheme();
     showCard(currentIndex, null);
@@ -184,8 +223,9 @@
     document.getElementById("homeBtn").addEventListener("click", () => {
       window.location.href = "index.html";
     });
+
     document.getElementById("continueBtn").addEventListener("click", () => {
-      window.location.href = "main-german.html";
+      window.location.href = "main-japanese.html";
     });
   }
 

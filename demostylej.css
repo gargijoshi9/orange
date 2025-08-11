@@ -1,0 +1,195 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: var(--header-bg);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#toggleThemeBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+main {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  overflow: hidden;
+}
+
+/* Carousel container and cards */
+.carousel-container {
+  width: 360px;
+  max-width: 90vw;
+  height: 420px;
+  position: relative; /* Important for nav-btn positioning */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  background-color: var(--card-bg);
+  margin-bottom: 1rem; /* space below carousel */
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 1.5rem;
+  text-align: center;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: default;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  will-change: transform, opacity;
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  object-fit: contain;
+}
+
+.word-english {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 0.3rem;
+}
+
+.word-german {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.word-instruction {
+  font-size: 1rem;
+  color: var(--instruction-color);
+  margin-top: auto;
+}
+
+/* Navigation buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--btn-bg);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: var(--btn-text);
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+.left-btn {
+  left: 10px;
+}
+
+.right-btn {
+  right: 10px;
+}
+
+/* Progress indicator */
+.progress-indicator {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-color);
+  user-select: none;
+  font-weight: 600;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.action-buttons button {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-buttons button:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+/* Light Theme Variables */
+:root {
+  --bg-color: #f0f0f0;
+  --text-color: #222;
+  --accent-color: #0066cc;
+  --instruction-color: #555;
+  --header-bg: #fff;
+  --card-bg: #fff;
+  --btn-bg: #007acc;
+  --btn-text: #fff;
+  --btn-hover-bg: #005a99;
+}
+
+/* Dark Theme Variables */
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #eee;
+  --accent-color: #3399ff;
+  --instruction-color: #bbb;
+  --header-bg: #1e1e1e;
+  --card-bg: #292929;
+  --btn-bg: #3399ff;
+  --btn-text: #121212;
+  --btn-hover-bg: #1a5edb;
+}

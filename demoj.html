@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Japanese Vocabulary Carousel</title>
+<link rel="stylesheet" href="demostylej.css" />
+</head>
+<body class="light-mode">
+<header>
+    <h1>日本語の基礎を学ぼう</h1>
+    <button id="toggleThemeBtn" aria-label="ダークモード／ライトモードを切り替える">🌙</button>
+</header>
+<main role="main" aria-live="polite">
+    <div class="carousel-container" id="carouselContainer">
+        <!-- 単語カードがここに表示されます -->
+    </div>
+
+    <button class="nav-btn left-btn" id="prevBtn" aria-label="前の単語">‹</button>
+    <button class="nav-btn right-btn" id="nextBtn" aria-label="次の単語">›</button>
+
+    <div id="progressIndicator" aria-live="polite" class="progress-indicator"></div>
+
+    <!-- 新しいボタン -->
+    <div class="action-buttons">
+        <button id="homeBtn">⬅ ホームページに戻る</button>
+        <button id="continueBtn">ゲームへ進む ➡</button>
+    </div>
+</main>
+
+<script src="demoj.js"></script>
+</body>
+</html>
