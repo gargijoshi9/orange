@@ -6,61 +6,61 @@
     {
       english: "Dog",
       german: "Hund",
-      image: "assets/dog.jpg",
+      image: "dog.jpg",
       instruction: "'Hund' (hoond) is the German word for Dog."
     },
     {
       english: "Cat",
       german: "Katze",
-      image: "assets/cat.jpg",
+      image: "cat.jpg",
       instruction: "'Katze' (kaht-ze) is the German word for Cat."
     },
     {
       english: "Apple",
       german: "Apfel",
-      image: "assets/apple.jpg",
+      image: "apple.jpg",
       instruction: "'Apfel' (ahp-fel) is the German word for Apple."
     },
     {
       english: "House",
       german: "Haus",
-      image: "assets/house.jpg",
+      image: "house.jpg",
       instruction: "'Haus' (hows) is the German word for House."
     },
     {
       english: "Car",
       german: "Auto",
-      image: "assets/car.jpg",
+      image: "car.jpg",
       instruction: "'Auto' (ow-toh) is the German word for Car."
     },
     {
       english: "Bird",
       german: "Vogel",
-      image: "assets/bird.jpg",
+      image: "bird.jpg",
       instruction: "'Vogel' (foh-gel) is the German word for Bird."
     },
     {
       english: "Thank You",
       german: "Danke",
-      image: "assets/thankyou.jpg",
+      image: "thankyou.jpg",
       instruction: "'Danke' (dahn-ke) is the German way to say Thank You."
     },
     {
       english: "Good Morning",
       german: "Guten Morgen",
-      image: "assets/goodmorning.jpg",
+      image: "goodmorning.jpg",
       instruction: "'Guten Morgen' (goo-ten mor-gen) is the German way to say Good Morning."
     },
     {
       english: "School",
       german: "Schule",
-      image: "assets/school.jpg",
+      image: "school.jpg",
       instruction: "'Schule' (shoo-le) is the German word for School."
     },
     {
       english: "Sorry",
       german: "Entschuldigung",
-      image: "assets/sorry.jpg",
+      image: "sorry.jpg",
       instruction: "'Entschuldigung' (ent-shool-dee-goong) is the German way to say Sorry."
     }
   ];
