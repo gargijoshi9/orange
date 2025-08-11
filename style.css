@@ -30,6 +30,7 @@
   --backtotop-active:#fbbc6a;
   --card-shadow: rgba(164, 88, 12, 1);
   --border:antiquewhite;
+  --site-language-text:antiquewhite;
 }
 
 /* Dark Theme overrides */
@@ -45,8 +46,8 @@ body.dark-mode {
   --brand-gradient3: #2b2a29;
   --brand-gradient4: #353433;
   --brand-gradient5: #3a3937;
-  --site-language-bg: #f68009b4;
-  --site-language-hover: #ff8f1a;
+  --site-language-bg: #ff8f1a;
+  --site-language-hover: #f68009b4;
   --navbar-bg: #3a3937;
   --navbar-border: #161615;
   --footer-bg: #f57c00;
@@ -60,6 +61,7 @@ body.dark-mode {
   --backtotop-active:#c76f04;
   --card-shadow: rgba(0,0,0,0.7);
   --border:#353433;
+  --site-language-text:#121212;
 }
 
 /* ===============================
@@ -168,7 +170,7 @@ body.dark-mode #darkModeToggle:hover {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background: var(--site-language-bg);
   border-radius: 20px;
-  color: white;
+  color: var(--site-language-text);
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer;
@@ -186,7 +188,7 @@ body.dark-mode #darkModeToggle:hover {
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid white;
+  border-top: 6px solid var(--site-language-text);
   margin-left: 8px;
   transition: transform 0.3s ease;
 }

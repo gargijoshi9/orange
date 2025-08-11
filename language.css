@@ -340,51 +340,51 @@ body.dark-mode {
 }
 
 body.dark-mode header {
-  background-color: #1f1f1f;
-  color: #ffaa4c;
+  background-color: #3a3937;
+  color: #fb8b03;
 }
 
 body.dark-mode .brand-name {
-  color: #ffaa4c;
+  color: #fb8b03;
 }
 
 body.dark-mode .site-language {
-  background: #ffaa4c90;
-  color: #fff;
+  background: #ff8f1a;
+  color: #121212;
 }
 body.dark-mode .site-language:hover {
-  background: #ffaa4cb5;
+  background: #f68009b4;
 }
 body.dark-mode .dropdown-arrow {
-  border-top-color: white;
+  border-top-color: #121212;
 }
 
 body.dark-mode .back {
-  background-color: #ffaa4c;
+  background-color: #f7941d;
 }
 body.dark-mode .back:hover {
-  background-color: #f48b21;
+  background-color: #f58a07;
 }
 body.dark-mode .back:active {
-  background-color: #e27d1e;
+  background-color: #c76f04;
 }
 
 body.dark-mode h1 {
-  color: #ffaa4c;
+  color: #fb8b03;
 }
 
 body.dark-mode .language-card {
-  background: #2a2a2a;
-  border: 2px solid #444;
+  background: #fb8b03;
+  border: 2px solid #c46d04;
   box-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
 body.dark-mode .language-card:hover {
-  background: #3a3a3a;
+  background: #f58a07;
   border-color: #ffaa4c;
 }
 
 body.dark-mode .lang-name {
-  color: #ffaa4c;
+  color: #121212;
 }
 
 /* 🌌 Dark Mode Animation Background */
@@ -394,10 +394,6 @@ body.dark-mode .area {
 }
 
 body.dark-mode .circles li {
-  background: rgba(255, 170, 76, 0.4); /* warm orange glow */
+  background: rgba(250, 158, 54, 0.555); /* warm orange glow */
 }
 
-/* Optional: make flags pop in dark mode */
-body.dark-mode .flag {
-  border: 1px solid #444;
-}
