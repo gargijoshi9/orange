@@ -15,9 +15,9 @@
 
     // Action buttons
     const homeBtn = document.getElementById("homeBtn");
-    if (homeBtn) homeBtn.textContent = "⬅ Back to Home Page"; 
+    if (homeBtn) homeBtn.textContent = " Back to Home Page"; 
     const continueBtn = document.getElementById("continueBtn");
-    if (continueBtn) continueBtn.textContent = "Continue to Game ➡"; 
+    if (continueBtn) continueBtn.textContent = "Continue to Game "; 
   });
 
   // --- JAPANESE VOCABULARY (ROMAJI) ---
@@ -56,18 +56,29 @@
     speechSynthesis.speak(utterance);
   }
 
-  // Initialize dark/light theme
-  function initTheme() {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.body.classList.toggle("dark-mode", savedTheme === "dark");
-    document.body.classList.toggle("light-mode", savedTheme === "light");
+// THEME SWITCH
+function initTheme() {
+  const toggleBtn = document.getElementById("darkModeToggle");
 
-    toggleThemeBtn.addEventListener("click", () => {
-      const darkActive = document.body.classList.toggle("dark-mode");
-      document.body.classList.toggle("light-mode", !darkActive);
-      localStorage.setItem("theme", darkActive ? "dark" : "light");
-    });
+  // Read the stored preference
+  const savedMode = localStorage.getItem("darkMode");
+  if (savedMode === "enabled") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+  } else {
+    document.body.classList.remove("dark-mode");
+    toggleBtn.textContent = "🌙";
   }
+
+  // Toggle when user clicks button
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const isDark = document.body.classList.contains("dark-mode");
+
+    localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+    toggleBtn.textContent = isDark ? "☀️" : "🌙";
+  });
+}
 
   // Create a card element — audio now from speech synthesis
   function createCard(vocab) {
@@ -158,7 +169,7 @@
     setupNavigation();
 
     document.getElementById("homeBtn").addEventListener("click", () => window.location.href = "index.html");
-    document.getElementById("continueBtn").addEventListener("click", () => window.location.href = "main-japanese.html");
+    document.getElementById("continueBtn").addEventListener("click", () => window.location.href = "japanese.html");
   }
 
   window.addEventListener("DOMContentLoaded", init);

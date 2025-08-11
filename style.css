@@ -106,7 +106,7 @@ header {
 }
 /* Header Dark Mode Toggle Button */
 #darkModeToggle {
-  background: #f67f09; /* theme orange */
+  background: #f48b21; /* theme orange */
   color: white;
   border: none;
   outline: none;
@@ -134,11 +134,11 @@ header {
 
 /* Dark mode look */
 body.dark-mode #darkModeToggle {
-  background: #ffaa4c;
+  background: #fddbba;
   color: #121212;
 }
 body.dark-mode #darkModeToggle:hover {
-  background: #ffb866;
+  background: #fddbba;
 }
 
 

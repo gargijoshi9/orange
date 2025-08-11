@@ -27,16 +27,42 @@ h1 {
   font-weight: 400;
   font-size: 3rem;
 }
-
-#toggleThemeBtn {
-  background: transparent;
+/* Header Dark Mode Toggle Button */
+#darkModeToggle {
+  background: #f48b21; /* theme orange */
+  color: white;
   border: none;
-  font-size: 1.5rem;
+  outline: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
   cursor: pointer;
-  color: var(--text-color);
-  transition: color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect */
+#darkModeToggle:hover {
+  background: #f48b21;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Active click effect */
+#darkModeToggle:active {
+  transform: scale(0.95);
+  background: #f4993e;
+}
+
+/* Dark mode look */
+body.dark-mode #darkModeToggle {
+  background: #fddbba;
+  color: #121212;
+}
+body.dark-mode #darkModeToggle:hover {
+  background: #fddbba;
+}
 .back {
   font-weight: bolder;
   position: fixed;

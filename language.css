@@ -81,44 +81,39 @@ header {
 .site-language:hover .dropdown-arrow {
   transform: rotate(180deg);
 }
-/* Header Dark Mode Toggle Button */
+/* Dark mode toggle button right-side */
 #darkModeToggle {
-  background: #f67f09; /* theme orange */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #f67f09;
   color: white;
   border: none;
-  outline: none;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   font-size: 1.2rem;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
-
-/* Hover effect */
 #darkModeToggle:hover {
   background: #f48b21;
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-50%);
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
-
-/* Active click effect */
 #darkModeToggle:active {
-  transform: scale(0.95);
   background: #f4993e;
+  transform: scale(0.95) translateY(-50%);
 }
-
-/* Dark mode look */
 body.dark-mode #darkModeToggle {
-  background: #ffaa4c;
+  background: #fddbba;
   color: #121212;
 }
 body.dark-mode #darkModeToggle:hover {
-  background: #ffb866;
+  background: #fddbba;
 }
-
-
 
 
 .back {
@@ -294,7 +289,7 @@ h1 {
   width: 20px;
   height: 20px;
   background: #f7951d81;
-  animation: animate 25s linear infinite;
+  animation: animate 12.5s linear infinite; /* Faster default: was 25s */
   bottom: -150px;
 }
 
@@ -302,13 +297,13 @@ h1 {
   left: 25%; width: 80px; height: 80px; animation-delay: 0s;
 }
 .circles li:nth-child(2) {
-  left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s;
+  left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 6s; /* was 12s */
 }
 .circles li:nth-child(3) {
   left: 70%; width: 20px; height: 20px; animation-delay: 4s;
 }
 .circles li:nth-child(4) {
-  left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s;
+  left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 9s; /* was 18s */
 }
 .circles li:nth-child(5) {
   left: 65%; width: 20px; height: 20px; animation-delay: 0s;
@@ -320,13 +315,13 @@ h1 {
   left: 35%; width: 150px; height: 150px; animation-delay: 7s;
 }
 .circles li:nth-child(8) {
-  left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s;
+  left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 22.5s; /* was 45s */
 }
 .circles li:nth-child(9) {
-  left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s;
+  left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 17.5s; /* was 35s */
 }
 .circles li:nth-child(10) {
-  left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s;
+  left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 5.5s; /* was 11s */
 }
 
 @keyframes animate {

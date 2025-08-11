@@ -77,7 +77,6 @@ header h1 {
 
 /* ABSOLUTELY position back arrow and toggle so h1 is always center */
 
-
 /* Dark mode toggle button right-side */
 #darkModeToggle {
   position: absolute;
@@ -105,11 +104,11 @@ header h1 {
   transform: scale(0.95) translateY(-50%);
 }
 body.dark-mode #darkModeToggle {
-  background: #ffaa4c;
+  background: #fddbba;
   color: #121212;
 }
 body.dark-mode #darkModeToggle:hover {
-  background: #ffb866;
+  background: #fddbba;
 }
 /* back button */
 .back {

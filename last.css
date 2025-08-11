@@ -179,11 +179,11 @@ h1 {
   transform: scale(0.95);
 }
 body.dark-mode #darkModeToggle {
-  background: #ffaa4c;
+  background: #fddbba;
   color: #121212;
 }
 body.dark-mode #darkModeToggle:hover {
-  background: #ffb866;
+  background: #fddbba;
 }
 
 /* ===== DARK MODE OVERRIDES ===== */

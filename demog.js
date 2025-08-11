@@ -43,20 +43,7 @@
   let currentIndex = 0;
   let isAnimating = false;
 
-  // === TEXT-TO-SPEECH FUNCTION ===
-  function speakText(text) {
-    if (!("speechSynthesis" in window)) {
-      alert("Ihr Browser unterstützt keine Sprachausgabe.");
-      return;
-    }
-    window.speechSynthesis.cancel(); // Stop any previous speech
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'de-DE'; // German voice if available
-    utterance.rate = 0.9; // Slightly slower for clarity
-    speechSynthesis.speak(utterance);
-  }
-
-  // Initialize dark/light theme
+  // THEME SWITCH
   function initTheme() {
     const savedTheme = localStorage.getItem("theme") || "light";
     document.body.classList.toggle("dark-mode", savedTheme === "dark");
@@ -157,8 +144,12 @@
     showCard(currentIndex, null);
     setupNavigation();
 
-    document.getElementById("homeBtn").addEventListener("click", () => window.location.href = "index.html");
-    document.getElementById("continueBtn").addEventListener("click", () => window.location.href = "main-german.html");
+    document.getElementById("homeBtn").addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+    document.getElementById("continueBtn").addEventListener("click", () => {
+      window.location.href = "main-german.html";
+    });
   }
 
   window.addEventListener("DOMContentLoaded", init);
