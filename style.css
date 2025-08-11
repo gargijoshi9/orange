@@ -6,10 +6,10 @@
 :root {
   --bg-main: #ffffff;
   --text-main: #4b4b4b;
-  --header-bg: #fbecd9;
+  --header-bg: antiquewhite;
   --header-text: #222;
-  --brand-orange: #f67f09;
-  --brand-orange-bold: #f58220;
+  --brand-orange: #fb8b03;
+  --brand-orange-bold: #fb8b03;
   --brand-gradient1: #fff4e6;
   --brand-gradient2: #ffe9d6;
   --brand-gradient3: #ffd4af;
@@ -22,38 +22,44 @@
   --footer-bg: #f57c00;
   --footer-text: #fff;
   --button-bg: #f67f09;
-  --button-bg-hover: #ff8f1a;
+  --button-bg-hover:#f5ac4c;
+  --button-bg-active:#fbbc6a;
   --button-text: #fff;
   --backtotop-bg: #f67f09;
-  --backtotop-hover: #f48b21;
+  --backtotop-hover: #f5ac4c;
+  --backtotop-active:#fbbc6a;
   --card-shadow: rgba(164, 88, 12, 1);
+  --border:antiquewhite;
 }
 
 /* Dark Theme overrides */
 body.dark-mode {
   --bg-main: #121212;
   --text-main: #f0f0f0;
-  --header-bg: #1c1c1c;
+  --header-bg: #3a3937;
   --header-text: #fff5ee;
-  --brand-orange: #ff9d4d;
-  --brand-orange-bold: #ffb878;
-  --brand-gradient1: #232323;
-  --brand-gradient2: #181818;
-  --brand-gradient3: #222;
-  --brand-gradient4: #181818;
-  --brand-gradient5: #181818;
-  --site-language-bg: rgba(255,170,100,0.5);
-  --site-language-hover: rgba(255,170,100,0.7);
-  --navbar-bg: #191818;
-  --navbar-border: #353535;
-  --footer-bg: #181818;
-  --footer-text: #e9e7e3;
-  --button-bg: #ff9d4d;
-  --button-bg-hover: #ffb878;
+  --brand-orange: #fb8b03;
+  --brand-orange-bold: #fb8b03;
+  --brand-gradient1: #151514;
+  --brand-gradient2: #212120;
+  --brand-gradient3: #2b2a29;
+  --brand-gradient4: #353433;
+  --brand-gradient5: #3a3937;
+  --site-language-bg: #f68009b4;
+  --site-language-hover: #ff8f1a;
+  --navbar-bg: #3a3937;
+  --navbar-border: #161615;
+  --footer-bg: #f57c00;
+  --footer-text:#353433;
+  --button-bg: #f7941d;
+  --button-bg-hover: #f58a07;
+  --button-bg-active:#c76f04;
   --button-text: #191818;
-  --backtotop-bg: #ff9d4d;
-  --backtotop-hover: #ffb878;
+  --backtotop-bg: #f7941d;
+  --backtotop-hover: #f58a07;
+  --backtotop-active:#c76f04;
   --card-shadow: rgba(0,0,0,0.7);
+  --border:#353433;
 }
 
 /* ===============================
@@ -260,6 +266,11 @@ body.dark-mode #darkModeToggle:hover {
   transform: translateY(-2px);
 }
 
+.get-started-button:active {
+  background-color: var(--button-bg-active);
+  transform: translateY(-2px);
+}
+
 /* Navigation */
 .div-3-i-hzb {
   border-top: 2px solid var(--navbar-border);
@@ -397,7 +408,7 @@ footer {
   right: 40px;
   background-color: var(--backtotop-bg);
   border-radius: 8px;
-  border: 2px solid antiquewhite;
+  border: 2px solid var(--border);
   padding: 5px;
   cursor: pointer;
   z-index: 1000;
@@ -409,6 +420,10 @@ footer {
 }
 .back-to-top:hover {
   background-color: var(--backtotop-hover);
+}
+
+.back-to-top:active {
+  background-color: var(--backtotop-active);
 }
 
 /* Responsive Styles */
