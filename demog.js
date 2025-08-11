@@ -5,31 +5,31 @@
     {
       english: "Dog",
       german: "Hund",
-      image: "assets/dog.jpg",
+      image: "dog.jpg",
       instruction: "The German word for Dog is 'Hund'."
     },
     {
       english: "Cat",
       german: "Katze",
-      image: "assets/cat.jpg",
+      image: "cat.jpg",
       instruction: "The German word for Cat is 'Katze'."
     },
     {
       english: "Apple",
       german: "Apfel",
-      image: "assets/apple.jpg",
+      image: "apple.jpg",
       instruction: "The German word for Apple is 'Apfel'."
     },
     {
       english: "House",
       german: "Haus",
-      image: "assets/house.jpg",
+      image: "house.jpg",
       instruction: "The German word for House is 'Haus'."
     },
     {
       english: "Car",
       german: "Auto",
-      image: "assets/car.jpg",
+      image: "car.jpg",
       instruction: "The German word for Car is 'Auto'."
     }
   ];
