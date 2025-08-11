@@ -35,61 +35,61 @@
     {
       english: "Dog",
       japanese: "Inu",
-      image: "assets/dog.jpg",
+      image: "dog.jpg",
       instruction: "'Inu' is the Japanese word for Dog."
     },
     {
       english: "Cat",
       japanese: "Neko",
-      image: "assets/cat.jpg",
+      image: "cat.jpg",
       instruction: "'Neko' is the Japanese word for Cat."
     },
     {
       english: "Apple",
       japanese: "Ringo",
-      image: "assets/apple.jpg",
+      image: "apple.jpg",
       instruction: "'Ringo' is the Japanese word for Apple."
     },
     {
       english: "House",
       japanese: "Ie",
-      image: "assets/house.jpg",
+      image: "house.jpg",
       instruction: "'Ie' is the Japanese word for House."
     },
     {
       english: "Car",
       japanese: "Kuruma",
-      image: "assets/car.jpg",
+      image: "car.jpg",
       instruction: "'Kuruma' is the Japanese word for Car."
     },
     {
       english: "Good Morning",
       japanese: "Ohayou",
-      image: "assets/goodmorning.jpg",
+      image: "goodmorning.jpg",
       instruction: "'Ohayou' is the Japanese way to say Good Morning."
     },
     {
       english: "Thank You",
       japanese: "Arigatou",
-      image: "assets/thankyou.jpg",
+      image: "thankyou.jpg",
       instruction: "'Arigatou' is the Japanese way to say Thank You."
     },
     {
       english: "Sorry",
       japanese: "Sumimasen",
-      image: "assets/sorry.jpg",
+      image: "sorry.jpg",
       instruction: "'Sumimasen' is the Japanese way to say Sorry."
     },
     {
       english: "School",
       japanese: "Gakkou",
-      image: "assets/school.jpg",
+      image: "school.jpg",
       instruction: "'Gakkou' is the Japanese word for School."
     },
     {
       english: "Bird",
       japanese: "Tori",
-      image: "assets/bird.jpg",
+      image: "bird.jpg",
       instruction: "'Tori' is the Japanese word for Bird."
     }
   ];

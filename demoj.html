@@ -3,28 +3,32 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Japanese Vocabulary Carousel</title>
-<link rel="stylesheet" href="demostylej.css" />
+ <title>ORANGE</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="demostylej.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
 </head>
 <body class="light-mode">
 <header>
-    <h1>日本語の基礎を学ぼう</h1>
+    <h1>Learn Japanese Basics</h1>
+    <a href="demo.html" class="back"><img src="arrow.png"></a>
     <button id="toggleThemeBtn" aria-label="ダークモード／ライトモードを切り替える">🌙</button>
 </header>
 <main role="main" aria-live="polite">
     <div class="carousel-container" id="carouselContainer">
-        <!-- 単語カードがここに表示されます -->
     </div>
 
-    <button class="nav-btn left-btn" id="prevBtn" aria-label="前の単語">‹</button>
-    <button class="nav-btn right-btn" id="nextBtn" aria-label="次の単語">›</button>
+    <button class="nav-btn left-btn" id="prevBtn" aria-label="Previous word">‹</button>
+    <button class="nav-btn right-btn" id="nextBtn" aria-label="Next word">›</button>
 
     <div id="progressIndicator" aria-live="polite" class="progress-indicator"></div>
 
-    <!-- 新しいボタン -->
+  
     <div class="action-buttons">
-        <button id="homeBtn">⬅ ホームページに戻る</button>
-        <button id="continueBtn">ゲームへ進む ➡</button>
+        <button id="homeBtn">⬅ Back to Home Page</button>
+        <button id="continueBtn">Continue to Game ➡</button>
     </div>
 </main>
 

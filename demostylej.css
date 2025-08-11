@@ -16,12 +16,16 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   margin: 0;
   font-size: 1.5rem;
+  color: #f7941d;
+  font-family: 'Jersey 10', sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
 }
 
 #toggleThemeBtn {
@@ -32,6 +36,37 @@ h1 {
   color: var(--text-color);
   transition: color 0.3s;
 }
+
+.back {
+  font-weight: bolder;
+  position: fixed;
+  top: 120px;
+  left: 40px;
+  background-color: var(--btn-bg);
+  padding: 5px 5px;
+  border-radius: 8px;
+  display: block;
+  z-index: 1000;
+  transition: background-color 0.15s;
+}
+
+.back img {
+  height: 40px;
+  width: 40px;
+}
+
+html:has(:target) .back {
+  display: block;
+}
+
+.back:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+.back:active {
+  background-color: var(--btn-active-bg);
+}
+
 
 main {
   flex: 1;
@@ -48,12 +83,14 @@ main {
   width: 360px;
   max-width: 90vw;
   height: 420px;
-  position: relative; /* Important for nav-btn positioning */
+  position: relative;
+  /* Important for nav-btn positioning */
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   background-color: var(--card-bg);
-  margin-bottom: 1rem; /* space below carousel */
+  margin-bottom: 1rem;
+  /* space below carousel */
 }
 
 .card {
@@ -80,7 +117,6 @@ main {
   max-height: 180px;
   border-radius: 8px;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   object-fit: contain;
 }
 
@@ -91,7 +127,7 @@ main {
   margin-bottom: 0.3rem;
 }
 
-.word-german {
+.word-japanese {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -126,22 +162,27 @@ main {
   background-color: var(--btn-hover-bg);
 }
 
+.nav-btn:active {
+  background-color: var(--btn-active-bg);
+}
+
+
 .left-btn {
-  left: 10px;
+  left: 15rem;
 }
 
 .right-btn {
-  right: 10px;
+  right: 15rem;
 }
 
 /* Progress indicator */
 .progress-indicator {
   position: absolute;
-  bottom: 10px;
+  bottom: 3rem;
   width: 100%;
   text-align: center;
   font-size: 1rem;
-  color: var(--text-color);
+  color: var(--indicator-color);
   user-select: none;
   font-weight: 600;
 }
@@ -150,16 +191,18 @@ main {
 .action-buttons {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 3rem;
 }
 
 .action-buttons button {
+  margin-top: 1.2rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-color: var(--btn-bg);
   color: var(--btn-text);
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -168,28 +211,36 @@ main {
   background-color: var(--btn-hover-bg);
 }
 
+.action-buttons button:active {
+  background-color: var(--btn-active-bg);
+}
+
 /* Light Theme Variables */
 :root {
   --bg-color: #f0f0f0;
-  --text-color: #222;
-  --accent-color: #0066cc;
-  --instruction-color: #555;
-  --header-bg: #fff;
-  --card-bg: #fff;
-  --btn-bg: #007acc;
-  --btn-text: #fff;
-  --btn-hover-bg: #005a99;
+  --text-color: #532e02;
+  --accent-color: #975504;
+  --instruction-color: #532e02;
+  --header-bg: antiquewhite;
+  --card-bg: antiquewhite;
+  --btn-bg: #f7941d;
+  --btn-text: white;
+  --btn-hover-bg: #f5ac4c;
+  --btn-active-bg: #fbbc6a;
+  --indicator-color: #fb8b03;
 }
 
 /* Dark Theme Variables */
 body.dark-mode {
   --bg-color: #121212;
-  --text-color: #eee;
-  --accent-color: #3399ff;
-  --instruction-color: #bbb;
-  --header-bg: #1e1e1e;
-  --card-bg: #292929;
-  --btn-bg: #3399ff;
+  --text-color: #e88102;
+  --accent-color: #f4a74a;
+  --instruction-color: #f5a645;
+  --header-bg: #3a3937;
+  --card-bg: #3a3937;
+  --btn-bg: #f7941d;
   --btn-text: #121212;
-  --btn-hover-bg: #1a5edb;
+  --btn-hover-bg: #f58a07;
+  --btn-active-bg: #c76f04;
+  --indicator-color: #fb8b03;
 }
