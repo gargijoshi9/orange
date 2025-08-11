@@ -10,88 +10,28 @@
     }
 
     // Nav button aria-labels
-    const prevBtnEl = document.getElementById("prevBtn");
-    if (prevBtnEl) {
-      prevBtnEl.setAttribute("aria-label", "Mae no Tango"); // Previous word
-    }
-    const nextBtnEl = document.getElementById("nextBtn");
-    if (nextBtnEl) {
-      nextBtnEl.setAttribute("aria-label", "Tsugi no Tango"); // Next word
-    }
+    document.getElementById("prevBtn")?.setAttribute("aria-label", "Mae no Tango");
+    document.getElementById("nextBtn")?.setAttribute("aria-label", "Tsugi no Tango");
 
     // Action buttons
     const homeBtn = document.getElementById("homeBtn");
-    if (homeBtn) {
-      homeBtn.textContent = "⬅ Back to Home Page"; 
-    }
+    if (homeBtn) homeBtn.textContent = "⬅ Back to Home Page"; 
     const continueBtn = document.getElementById("continueBtn");
-    if (continueBtn) {
-      continueBtn.textContent = "Continue to Game ➡"; 
-    }
+    if (continueBtn) continueBtn.textContent = "Continue to Game ➡"; 
   });
 
-  // --- JAPANESE VOCABULARY (ROMAJI) ---
+  // --- JAPANESE VOCABULARY (ROMAJI) WITH AUDIO FILES ---
   const VOCABULARY = [
-    {
-      english: "Dog",
-      japanese: "Inu",
-      image: "dog.jpg",
-      instruction: "'Inu' is the Japanese word for Dog."
-    },
-    {
-      english: "Cat",
-      japanese: "Neko",
-      image: "cat.jpg",
-      instruction: "'Neko' is the Japanese word for Cat."
-    },
-    {
-      english: "Apple",
-      japanese: "Ringo",
-      image: "apple.jpg",
-      instruction: "'Ringo' is the Japanese word for Apple."
-    },
-    {
-      english: "House",
-      japanese: "Ie",
-      image: "house.jpg",
-      instruction: "'Ie' is the Japanese word for House."
-    },
-    {
-      english: "Car",
-      japanese: "Kuruma",
-      image: "car.jpg",
-      instruction: "'Kuruma' is the Japanese word for Car."
-    },
-    {
-      english: "Good Morning",
-      japanese: "Ohayou",
-      image: "goodmorning.jpg",
-      instruction: "'Ohayou' is the Japanese way to say Good Morning."
-    },
-    {
-      english: "Thank You",
-      japanese: "Arigatou",
-      image: "thankyou.jpg",
-      instruction: "'Arigatou' is the Japanese way to say Thank You."
-    },
-    {
-      english: "Sorry",
-      japanese: "Sumimasen",
-      image: "sorry.jpg",
-      instruction: "'Sumimasen' is the Japanese way to say Sorry."
-    },
-    {
-      english: "School",
-      japanese: "Gakkou",
-      image: "school.jpg",
-      instruction: "'Gakkou' is the Japanese word for School."
-    },
-    {
-      english: "Bird",
-      japanese: "Tori",
-      image: "bird.jpg",
-      instruction: "'Tori' is the Japanese word for Bird."
-    }
+    { english: "Dog", japanese: "Inu", image: "dog.jpg", instruction: "'Inu' is the Japanese word for Dog.", audio: "audio/inu.mp3" },
+    { english: "Cat", japanese: "Neko", image: "cat.jpg", instruction: "'Neko' is the Japanese word for Cat.", audio: "audio/neko.mp3" },
+    { english: "Apple", japanese: "Ringo", image: "apple.jpg", instruction: "'Ringo' is the Japanese word for Apple.", audio: "audio/ringo.mp3" },
+    { english: "House", japanese: "Ie", image: "house.jpg", instruction: "'Ie' is the Japanese word for House.", audio: "audio/ie.mp3" },
+    { english: "Car", japanese: "Kuruma", image: "car.jpg", instruction: "'Kuruma' is the Japanese word for Car.", audio: "audio/kuruma.mp3" },
+    { english: "Good Morning", japanese: "Ohayou", image: "goodmorning.jpg", instruction: "'Ohayou' is the Japanese way to say Good Morning.", audio: "audio/ohayou.mp3" },
+    { english: "Thank You", japanese: "Arigatou", image: "thankyou.jpg", instruction: "'Arigatou' is the Japanese way to say Thank You.", audio: "audio/arigatou.mp3" },
+    { english: "Sorry", japanese: "Sumimasen", image: "sorry.jpg", instruction: "'Sumimasen' is the Japanese way to say Sorry.", audio: "audio/sumimasen.mp3" },
+    { english: "School", japanese: "Gakkou", image: "school.jpg", instruction: "'Gakkou' is the Japanese word for School.", audio: "audio/gakkou.mp3" },
+    { english: "Bird", japanese: "Tori", image: "bird.jpg", instruction: "'Tori' is the Japanese word for Bird.", audio: "audio/tori.mp3" }
   ];
 
   const carouselContainer = document.getElementById("carouselContainer");
@@ -116,34 +56,38 @@
     });
   }
 
-  // Create a card element from vocabulary item
+  // Create a card element from vocabulary item — includes audio button
   function createCard(vocab) {
     const card = document.createElement("div");
     card.className = "card";
     card.setAttribute("tabindex", "0");
-    card.setAttribute(
-      "aria-label",
-      `Vocabulary: ${vocab.english}, Japanese (romaji): ${vocab.japanese}`
-    );
+    card.setAttribute("aria-label", `Vocabulary: ${vocab.english}, Japanese (romaji): ${vocab.japanese}`);
 
     card.innerHTML = `
       <img src="${vocab.image}" alt="${vocab.english} image" />
       <div class="word-english">${vocab.english}</div>
       <div class="word-japanese">${vocab.japanese}</div>
+      <button class="audio-btn" aria-label="Play pronunciation for ${vocab.japanese}">🔊</button>
       <div class="word-instruction">${vocab.instruction}</div>
     `;
+
+    // Play audio on click
+    const audioBtn = card.querySelector(".audio-btn");
+    audioBtn.addEventListener("click", () => {
+      if (vocab.audio) new Audio(vocab.audio).play();
+      else alert("No audio file available for this word.");
+    });
 
     return card;
   }
 
-  // Show card at current index with sliding animation
+  // Show card at current index
   function showCard(newIndex, direction) {
     if (direction !== null && (isAnimating || newIndex === currentIndex)) return;
 
     if (newIndex < 0) newIndex = VOCABULARY.length - 1;
     if (newIndex >= VOCABULARY.length) newIndex = 0;
 
-    // --- First load (no animation) ---
     if (direction === null) {
       carouselContainer.innerHTML = "";
       const card = createCard(VOCABULARY[newIndex]);
@@ -156,77 +100,50 @@
       return;
     }
 
-    // --- Animated Card Change ---
+    // Animated change
     isAnimating = true;
     const outgoingCard = carouselContainer.querySelector(".card");
     const incomingCard = createCard(VOCABULARY[newIndex]);
 
-    if (direction === "next") {
-      incomingCard.style.transform = "translateX(100%)";
-    } else {
-      incomingCard.style.transform = "translateX(-100%)";
-    }
+    incomingCard.style.transform = direction === "next" ? "translateX(100%)" : "translateX(-100%)";
     incomingCard.style.opacity = "0";
     carouselContainer.appendChild(incomingCard);
 
-    void incomingCard.offsetWidth; // force reflow
+    void incomingCard.offsetWidth;
 
     if (outgoingCard) {
-      if (direction === "next") {
-        outgoingCard.style.transform = "translateX(-100%)";
-      } else {
-        outgoingCard.style.transform = "translateX(100%)";
-      }
+      outgoingCard.style.transform = direction === "next" ? "translateX(-100%)" : "translateX(100%)";
       outgoingCard.style.opacity = "0";
     }
 
     incomingCard.style.transform = "translateX(0)";
     incomingCard.style.opacity = "1";
 
-    incomingCard.addEventListener(
-      "transitionend",
-      () => {
-        if (outgoingCard) {
-          carouselContainer.removeChild(outgoingCard);
-        }
-        currentIndex = newIndex;
-        updateProgress();
-        isAnimating = false;
-        incomingCard.focus();
-      },
-      { once: true }
-    );
+    incomingCard.addEventListener("transitionend", () => {
+      if (outgoingCard) carouselContainer.removeChild(outgoingCard);
+      currentIndex = newIndex;
+      updateProgress();
+      isAnimating = false;
+      incomingCard.focus();
+    }, { once: true });
   }
 
-  // Update progress text
   function updateProgress() {
     progressIndicator.textContent = `Word ${currentIndex + 1} of ${VOCABULARY.length}`;
   }
 
-  // Set up event listeners for navigation
   function setupNavigation() {
-    prevBtn.addEventListener("click", () => {
-      showCard(currentIndex - 1, "prev");
-    });
-
-    nextBtn.addEventListener("click", () => {
-      showCard(currentIndex + 1, "next");
-    });
+    prevBtn.addEventListener("click", () => showCard(currentIndex - 1, "prev"));
+    nextBtn.addEventListener("click", () => showCard(currentIndex + 1, "next"));
   }
 
-  // Initialize everything
   function init() {
     initTheme();
     showCard(currentIndex, null);
     setupNavigation();
 
-    document.getElementById("homeBtn").addEventListener("click", () => {
-      window.location.href = "index.html";
-    });
-
-    document.getElementById("continueBtn").addEventListener("click", () => {
-      window.location.href = "main-japanese.html";
-    });
+    document.getElementById("homeBtn").addEventListener("click", () => window.location.href = "index.html");
+    document.getElementById("continueBtn").addEventListener("click", () => window.location.href = "main-japanese.html");
   }
 
   window.addEventListener("DOMContentLoaded", init);

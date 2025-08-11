@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ORANGE</title>
-    <link rel="icon" href="icon.png" type="image/png">
-    <link rel="stylesheet" href="styleg.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-    </head>
-    <body class="light-mode">
-    <header>
-        <h1>Learn German Basics</h1>
-         <a href="demo.html" class="back"><img src="arrow.png"></a>
-        <button id="toggleThemeBtn" aria-label="Toggle Dark / Light Mode">🌙</button>
-    </header>
-    <main role="main" aria-live="polite">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ORANGE</title>
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="stylesheet" href="styleg.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+  <header>
+    <h1>Learn German Basics</h1>
+    <!-- Back arrow to previous page -->
+    <a href="demo.html" class="back" aria-label="Go back"><img src="arrow.png" alt="Back arrow"></a>
+    <!-- Theme toggle -->
+    <button id="toggleThemeBtn" aria-label="Toggle Dark / Light Mode">🌙</button>
+  </header>
+
+  <main role="main" aria-live="polite">
+    <!-- Container for dynamically injected German vocabulary cards -->
     <div class="carousel-container" id="carouselContainer">
+      <!-- JS injects cards with image, English, German, speaker button, and instruction -->
     </div>
-    
+
+    <!-- Navigation buttons for carousel -->
     <button class="nav-btn left-btn" id="prevBtn" aria-label="Previous word">‹</button>
     <button class="nav-btn right-btn" id="nextBtn" aria-label="Next word">›</button>
-    
+
+    <!-- Word progress indicator -->
     <div id="progressIndicator" aria-live="polite" class="progress-indicator"></div>
 
-    <!-- New Buttons -->
+    <!-- Action buttons -->
     <div class="action-buttons">
-        <button id="homeBtn">⬅ Back to Home Page</button>
-        <button id="continueBtn">Continue to Game ➡</button>
+      <button id="homeBtn">⬅ Back to Home Page</button>
+      <button id="continueBtn" onclick="location.href='german.html'">Continue to Game ➡</button>
     </div>
-    </main>
+  </main>
 
-
-    <script src="demog.js"></script>
-    </body>
-    </html>
+  <!-- JS with German vocabulary + sound buttons -->
+  <script src="demog.js"></script>
+</body>
+</html>

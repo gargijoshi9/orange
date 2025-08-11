@@ -244,3 +244,26 @@ body.dark-mode {
   --btn-active-bg: #c76f04;
   --indicator-color: #fb8b03;
 }
+
+.audio-btn {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  width: 40px;           /* equal width and height for circle */
+  height: 40px;
+  display: flex; 
+  align-self: center;        /* center the icon */
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.audio-btn:hover {
+  background-color: var(--btn-hover-bg);
+}
+.audio-btn:active {
+  background-color: var(--btn-active-bg);
+}

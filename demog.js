@@ -1,67 +1,77 @@
 (() => {
   "use strict";
 
-  // --- GERMAN VOCABULARY (ROMANIZED) ---
+  // --- GERMAN VOCABULARY WITH AUDIO FILES ---
   const VOCABULARY = [
     {
       english: "Dog",
       german: "Hund",
       image: "dog.jpg",
-      instruction: "'Hund' (hoond) is the German word for Dog."
+      instruction: "'Hund' (hoond) is the German word for Dog.",
+      audio: "audio/hund.mp3"
     },
     {
       english: "Cat",
       german: "Katze",
       image: "cat.jpg",
-      instruction: "'Katze' (kaht-ze) is the German word for Cat."
+      instruction: "'Katze' (kaht-ze) is the German word for Cat.",
+      audio: "audio/katze.mp3"
     },
     {
       english: "Apple",
       german: "Apfel",
       image: "apple.jpg",
-      instruction: "'Apfel' (ahp-fel) is the German word for Apple."
+      instruction: "'Apfel' (ahp-fel) is the German word for Apple.",
+      audio: "audio/apfel.mp3"
     },
     {
       english: "House",
       german: "Haus",
       image: "house.jpg",
-      instruction: "'Haus' (hows) is the German word for House."
+      instruction: "'Haus' (hows) is the German word for House.",
+      audio: "audio/haus.mp3"
     },
     {
       english: "Car",
       german: "Auto",
       image: "car.jpg",
-      instruction: "'Auto' (ow-toh) is the German word for Car."
+      instruction: "'Auto' (ow-toh) is the German word for Car.",
+      audio: "audio/auto.mp3"
     },
     {
       english: "Bird",
       german: "Vogel",
       image: "bird.jpg",
-      instruction: "'Vogel' (foh-gel) is the German word for Bird."
+      instruction: "'Vogel' (foh-gel) is the German word for Bird.",
+      audio: "audio/vogel.mp3"
     },
     {
       english: "Thank You",
       german: "Danke",
       image: "thankyou.jpg",
-      instruction: "'Danke' (dahn-ke) is the German way to say Thank You."
+      instruction: "'Danke' (dahn-ke) is the German way to say Thank You.",
+      audio: "audio/danke.mp3"
     },
     {
       english: "Good Morning",
       german: "Guten Morgen",
       image: "goodmorning.jpg",
-      instruction: "'Guten Morgen' (goo-ten mor-gen) is the German way to say Good Morning."
+      instruction: "'Guten Morgen' (goo-ten mor-gen) is the German way to say Good Morning.",
+      audio: "audio/gutenmorgen.mp3"
     },
     {
       english: "School",
       german: "Schule",
       image: "school.jpg",
-      instruction: "'Schule' (shoo-le) is the German word for School."
+      instruction: "'Schule' (shoo-le) is the German word for School.",
+      audio: "audio/schule.mp3"
     },
     {
       english: "Sorry",
       german: "Entschuldigung",
       image: "sorry.jpg",
-      instruction: "'Entschuldigung' (ent-shool-dee-goong) is the German way to say Sorry."
+      instruction: "'Entschuldigung' (ent-shool-dee-goong) is the German way to say Sorry.",
+      audio: "audio/entschuldigung.mp3"
     }
   ];
 
@@ -74,7 +84,7 @@
   let currentIndex = 0;
   let isAnimating = false;
 
-  // Initialize dark/light theme
+  // THEME SWITCH
   function initTheme() {
     const savedTheme = localStorage.getItem("theme") || "light";
     document.body.classList.toggle("dark-mode", savedTheme === "dark");
@@ -87,7 +97,7 @@
     });
   }
 
-  // Create a card element from vocabulary item
+  // CREATE CARD WITH AUDIO BUTTON
   function createCard(vocab) {
     const card = document.createElement("div");
     card.className = "card";
@@ -98,13 +108,21 @@
       <img src="${vocab.image}" alt="${vocab.english} image" />
       <div class="word-english">${vocab.english}</div>
       <div class="word-german">${vocab.german}</div>
+      <button class="audio-btn" aria-label="Play pronunciation for ${vocab.german}">🔊</button>
       <div class="word-instruction">${vocab.instruction}</div>
     `;
+
+    // Add audio play event
+    const audioBtn = card.querySelector(".audio-btn");
+    audioBtn.addEventListener("click", () => {
+      const audio = new Audio(vocab.audio);
+      audio.play();
+    });
 
     return card;
   }
 
-  // Show card at current index with sliding animation
+  // SHOW CARD
   function showCard(newIndex, direction) {
     if (direction !== null && (isAnimating || newIndex === currentIndex)) return;
 
@@ -127,22 +145,14 @@
     const outgoingCard = carouselContainer.querySelector(".card");
     const incomingCard = createCard(VOCABULARY[newIndex]);
 
-    if (direction === "next") {
-      incomingCard.style.transform = "translateX(100%)";
-    } else {
-      incomingCard.style.transform = "translateX(-100%)";
-    }
+    incomingCard.style.transform = direction === "next" ? "translateX(100%)" : "translateX(-100%)";
     incomingCard.style.opacity = "0";
     carouselContainer.appendChild(incomingCard);
 
-    void incomingCard.offsetWidth; // force reflow
+    void incomingCard.offsetWidth;
 
     if (outgoingCard) {
-      if (direction === "next") {
-        outgoingCard.style.transform = "translateX(-100%)";
-      } else {
-        outgoingCard.style.transform = "translateX(100%)";
-      }
+      outgoingCard.style.transform = direction === "next" ? "translateX(-100%)" : "translateX(100%)";
       outgoingCard.style.opacity = "0";
     }
 
@@ -150,9 +160,7 @@
     incomingCard.style.opacity = "1";
 
     incomingCard.addEventListener("transitionend", () => {
-      if (outgoingCard) {
-        carouselContainer.removeChild(outgoingCard);
-      }
+      if (outgoingCard) carouselContainer.removeChild(outgoingCard);
       currentIndex = newIndex;
       updateProgress();
       isAnimating = false;
@@ -160,12 +168,12 @@
     }, { once: true });
   }
 
-  // Update progress
+  // UPDATE PROGRESS
   function updateProgress() {
     progressIndicator.textContent = `Word ${currentIndex + 1} of ${VOCABULARY.length}`;
   }
 
-  // Navigation setup
+  // SETUP NAVIGATION
   function setupNavigation() {
     prevBtn.addEventListener("click", () => {
       showCard(currentIndex - 1, "prev");
@@ -175,7 +183,7 @@
     });
   }
 
-  // Init
+  // INIT APP
   function init() {
     initTheme();
     showCard(currentIndex, null);

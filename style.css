@@ -203,6 +203,7 @@ body.dark-mode #darkModeToggle:hover {
 .fruits {
   max-width: 500px;
   flex: 1;
+  margin-right: 30px;
 }
 
 .heading-1 {
@@ -211,7 +212,7 @@ body.dark-mode #darkModeToggle:hover {
 
 .the-free-fun-and-effective-way-to,
 .learn-a-language {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--text-main);
   font-weight: 700;
   margin: 0.5rem 0;
@@ -220,12 +221,30 @@ body.dark-mode #darkModeToggle:hover {
 .cta-container {
   margin-top: 20px;
 }
+.godemo{
+  font-size: 1.5rem;
+  color: var(--text-main);
+  font-weight: 700;
+  margin: 0.5rem 0;
+  margin-top: 80px;
+
+}
+.godemos{
+  font-size: 1.5rem;
+  color: var(--text-main);
+  font-weight: 700;
+  margin: 0.5rem 0;
+  margin-top: 10px;
+}
+.demo{
+  margin-top: 20px;
+}
 
 .get-started-button {
   width: 200px;
   height: 50px;
   background: var(--button-bg);
-  margin-top: 20px;
+  margin-top: 0px;
   color: var(--button-text);
   font-weight: bold;
   letter-spacing: 0.8px;
