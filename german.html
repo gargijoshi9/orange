@@ -1,38 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ORANGE</title>
-  <link rel="icon" href="icon.png" type="image/png">
-  <link rel="stylesheet" href="german.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-  <audio id="success-sound" src="mixkit-fantasy-game-success-notification-270.wav" preload="auto"></audio>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORANGE</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="german.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <audio id="success-sound" src="mixkit-fantasy-game-success-notification-270.wav" preload="auto"></audio>
 
 
-</head>
+  </head>
 
-<body>
+  <body>
 
-  <div class="app-container">
-    <header>
-      <h1>Learn German : Deutsch</h1>
-    </header>
-    <a href="language.html" class="back"><img src="arrow.png"></a>
-    <div class="hud">
-      <div class="xp-bar">XP: <span id="xpAmount">0</span></div>
-      <div class="hearts">Hearts: <span id="hearts">❤️❤️❤️</span></div>
+    <div class="app-container">
+     <header>
+  
+  <h1>Learn German : Deutsch</h1>
+  <button id="darkModeToggle">🌙</button>
+</header>
+
+      <div class="hud">
+        <a href="language.html" class="back"><img src="arrow.png" alt="Back"></a>
+        <div class="xp-bar">XP: <span id="xpAmount">0</span></div>
+        <div class="hearts">Hearts: <span id="hearts">❤️❤️❤️</span></div>
+      </div>
+
+      <div id="mainContent"> <!-- Activities & Navigation appear here --> </div>
     </div>
+    <script src="german.js"></script>
+    <audio id="audio-correct" src="correct.wav" preload="auto"></audio>
+    <audio id="audio-wrong" src="wrong.mp3" preload="auto"></audio>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("darkModeToggle");
 
-    <div id="mainContent"> <!-- Activities & Navigation appear here --> </div>
-  </div>
-  <script src="german.js"></script>
-  <audio id="audio-correct" src="correct.wav" preload="auto"></audio>
-  <audio id="audio-wrong" src="wrong.mp3" preload="auto"></audio>
+  // Load saved mode on page load
+  const darkModeSetting = localStorage.getItem("darkMode");
+  if (darkModeSetting === "enabled") {
+    document.body.classList.add("dark-mode");
+    if (toggleBtn) toggleBtn.textContent = "☀️";
+  }
 
-</body>
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDarkMode = document.body.classList.contains("dark-mode");
+      localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
 
-</html>
+      // Update icon
+      toggleBtn.textContent = isDarkMode ? "☀️" : "🌙";
+    });
+  }
+});
+    </script>
+  </body>
+
+  </html>

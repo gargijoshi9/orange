@@ -24,6 +24,8 @@
     <div class="site-language">
       SITE LANGUAGE: ENGLISH <span class="dropdown-arrow"></span>
     </div>
+    <button id="darkModeToggle">🌙</button>
+
   </header>
 
   <!-- HERO SECTION -->
@@ -199,9 +201,31 @@
   </footer>
 
   <script>
-    document.querySelector('.back-to-top')?.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelector('.back-to-top')?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+  document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("darkModeToggle");
+
+  // Load saved mode on page load
+  const darkModeSetting = localStorage.getItem("darkMode");
+  if (darkModeSetting === "enabled") {
+    document.body.classList.add("dark-mode");
+    if (toggleBtn) toggleBtn.textContent = "☀️";
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDarkMode = document.body.classList.contains("dark-mode");
+      localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
+
+      // Update icon
+      toggleBtn.textContent = isDarkMode ? "☀️" : "🌙";
     });
+  }
+});
+
   </script>
 </body>
 

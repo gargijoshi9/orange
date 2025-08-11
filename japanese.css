@@ -51,30 +51,74 @@ body {
   overflow: visible;
   pointer-events: none;
 }
+
 /* =========================== HEADER =========================== */
 header {
-  text-align: center;
+  position: relative;
+  height: 84px;                  /* adjust based on your h1/button size */
+  display: flex;
+  align-items: center;
+  justify-content: center;       /* so h1 centers even with abs elements */
   margin-bottom: 36px;
+  padding: 0 20px;
 }
 
-header h1,
-header .title {
+header h1 {
+  margin: 0;
   font-family: 'Jersey 10', sans-serif;
-  color: #ff8800;
   font-size: 4rem;
   letter-spacing: 2px;
   font-weight: 400;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  color: #ff8800;
+  text-align: center;
+  flex: 0 1 auto;
 }
 
+/* ABSOLUTELY position back arrow and toggle so h1 is always center */
+
+
+/* Dark mode toggle button right-side */
+#darkModeToggle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #f67f09;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+#darkModeToggle:hover {
+  background: #f48b21;
+  transform: scale(1.05) translateY(-50%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+#darkModeToggle:active {
+  background: #f4993e;
+  transform: scale(0.95) translateY(-50%);
+}
+body.dark-mode #darkModeToggle {
+  background: #ffaa4c;
+  color: #121212;
+}
+body.dark-mode #darkModeToggle:hover {
+  background: #ffb866;
+}
+/* back button */
 .back {
   font-weight: bolder;
-  position: absolute;
+  position: fixed;
   top: 120px;
   left: 40px;
   background-color: #f67f09;
-  padding: 5px;
+  padding: 5px 5px;
   border-radius: 8px;
   display: block;
   z-index: 1000;
@@ -97,6 +141,11 @@ html:has(:target) .back {
 .back:active {
   background-color: #f4993e;
 }
+
+
+/* Dark mode for back arrow */
+body.dark-mode .back { background: #ffaa4c; }
+body.dark-mode .back:hover { background: #ffb866; }
 
 /* ======================== LEVELS & NAVIGATION ======================= */
 .level-select {
@@ -307,6 +356,7 @@ html:has(:target) .back {
   margin-bottom: 30px;
   letter-spacing: 0.2px;
   user-select: text;
+  margin-top: 15px;
 }
 
 .instruction-banner {
@@ -823,6 +873,7 @@ html:has(:target) .back {
   box-sizing: border-box;
 }
 
+
 .undo-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -903,11 +954,12 @@ html:has(:target) .back {
   background: #fff5f8;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(255, 153, 204, 0.2);
-  padding: 42px 30px;
+  padding: 36px 30px;
   min-height: 450px;
   /* Ensures space for the buttons */
   user-select: none;
 }
+
 
 /* Specific button positioning within the new flexbox layout */
 .undo-btn {
@@ -932,6 +984,7 @@ html:has(:target) .back {
 .undo-btn:active {
   background: #faa550;
 }
+
 
 .undo-btn:disabled {
   background: #a0aec0;
@@ -978,4 +1031,156 @@ html:has(:target) .back {
   100% {
     transform: scale(1);
   }
+}
+/* ===================== DARK MODE OVERRIDES ===================== */
+body.dark-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+/* Header */
+body.dark-mode header h1,
+body.dark-mode header .title {
+  color: #ffaa4c;
+}
+
+/* Back Button */
+body.dark-mode .back {
+  background-color: #ffaa4c;
+}
+body.dark-mode .back:hover {
+  background-color: #ffb866;
+}
+
+/* HUD */
+body.dark-mode .hud {
+  color: #ffaa4c;
+}
+body.dark-mode .xp-bar,
+body.dark-mode .hearts {
+  background: #2a2a2a;
+  color: #ffaa4c;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Level circles */
+body.dark-mode .level-circle-outer {
+  background: #333;
+  border-color: #444;
+  box-shadow: 0 5px 20px rgba(0,0,0,.5);
+}
+body.dark-mode .level-star {
+  color: #ffaa4c;
+  text-shadow: 0 2px 6px rgba(255, 170, 76, 0.6);
+}
+body.dark-mode .level-label {
+  color: #ffaa4c;
+}
+
+/* Buttons */
+body.dark-mode .level-btn,
+body.dark-mode .level-btn1,
+body.dark-mode .submit-btn,
+body.dark-mode .mcq-btn,
+body.dark-mode #continuePrompt .continue-btn,
+body.dark-mode .undo-btn {
+  background: #ffaa4c;
+  color: #121212;
+}
+body.dark-mode .level-btn:hover:not(:disabled),
+body.dark-mode .level-btn1:hover:not(:disabled),
+body.dark-mode .submit-btn:hover:not(:disabled),
+body.dark-mode .mcq-btn:hover,
+body.dark-mode #continuePrompt .continue-btn:hover,
+body.dark-mode .undo-btn:hover {
+  background: #ffb866;
+}
+
+/* Activity containers */
+body.dark-mode .activity,
+body.dark-mode .match-activity {
+  background: #1f1f1f;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+body.dark-mode .activity>div:first-child {
+  color: #ffb866;
+}
+
+/* Instruction Banners */
+body.dark-mode .instruction-banner {
+  background: #2a2a2a;
+  border-left-color: #ffaa4c;
+  color: #eaeaea;
+}
+
+/* Input fields */
+body.dark-mode .input-blank {
+  background: #2c2c2c;
+  border-color: #ffaa4c;
+  color: #fff;
+}
+body.dark-mode .input-blank:focus {
+  background: #383838;
+}
+
+/* Drag & Drop */
+body.dark-mode .dd-item {
+  background: #444;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+body.dark-mode .dd-drop {
+  background: #2c2c2c;
+  border-color: #555;
+  color: #f1f1f1;
+}
+body.dark-mode .dd-drop.dragover {
+  background: #333;
+  border-color: #ffaa4c;
+}
+
+/* Feedback */
+body.dark-mode .feedback {
+  color: #ffaa4c;
+  text-shadow: none;
+}
+body.dark-mode .positive {
+  color: #baffcd;
+}
+body.dark-mode .negative {
+  color: #ffcece;
+}
+
+/* Popups */
+body.dark-mode .feedback-popup {
+  background-color: rgba(30, 30, 30, 0.95);
+}
+body.dark-mode .feedback-popup.positive {
+  background-color: rgba(25, 191, 94, 0.9);
+}
+body.dark-mode .feedback-popup.negative {
+  background-color: rgba(255, 53, 31, 0.9);
+}
+
+/* Audio button */
+body.dark-mode .audio-btn {
+  border-color: #ffaa4c;
+  color: #ffaa4c;
+  background: #1f1f1f;
+}
+body.dark-mode .audio-btn:hover,
+body.dark-mode .audio-btn:focus {
+  background: #ffaa4c;
+  color: #121212;
+}
+
+/* Confetti Pieces */
+body.dark-mode .confetti-piece {
+  opacity: 0.9;
+}
+
+/* Highlight matched */
+body.dark-mode .dd-matched {
+  background: #333 !important;
+  border-color: #ffaa4c !important;
+  color: #ffaa4c !important;
 }

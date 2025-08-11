@@ -59,7 +59,7 @@ header {
   border-radius: 20px;
   color: white;
   transition: background-color 0.3s ease;
-  margin-right: 2rem;
+  transform: translateX(+400px);
   cursor: pointer;
 }
 
@@ -81,6 +81,45 @@ header {
 .site-language:hover .dropdown-arrow {
   transform: rotate(180deg);
 }
+/* Header Dark Mode Toggle Button */
+#darkModeToggle {
+  background: #f67f09; /* theme orange */
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+#darkModeToggle:hover {
+  background: #f48b21;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Active click effect */
+#darkModeToggle:active {
+  transform: scale(0.95);
+  background: #f4993e;
+}
+
+/* Dark mode look */
+body.dark-mode #darkModeToggle {
+  background: #ffaa4c;
+  color: #121212;
+}
+body.dark-mode #darkModeToggle:hover {
+  background: #ffb866;
+}
+
+
+
 
 .back {
   font-weight: bolder;
@@ -293,4 +332,77 @@ h1 {
 @keyframes animate {
   0%   { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
   100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+}
+
+/* 🌙 DARK MODE SUPPORT */
+
+/* Light mode as default (your original styles) */
+
+/* Dark mode activation */
+body.dark-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode header {
+  background-color: #1f1f1f;
+  color: #ffaa4c;
+}
+
+body.dark-mode .brand-name {
+  color: #ffaa4c;
+}
+
+body.dark-mode .site-language {
+  background: #ffaa4c90;
+  color: #fff;
+}
+body.dark-mode .site-language:hover {
+  background: #ffaa4cb5;
+}
+body.dark-mode .dropdown-arrow {
+  border-top-color: white;
+}
+
+body.dark-mode .back {
+  background-color: #ffaa4c;
+}
+body.dark-mode .back:hover {
+  background-color: #f48b21;
+}
+body.dark-mode .back:active {
+  background-color: #e27d1e;
+}
+
+body.dark-mode h1 {
+  color: #ffaa4c;
+}
+
+body.dark-mode .language-card {
+  background: #2a2a2a;
+  border: 2px solid #444;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+body.dark-mode .language-card:hover {
+  background: #3a3a3a;
+  border-color: #ffaa4c;
+}
+
+body.dark-mode .lang-name {
+  color: #ffaa4c;
+}
+
+/* 🌌 Dark Mode Animation Background */
+body.dark-mode .area {
+  background: #121212;
+  background: -webkit-linear-gradient(to left, #121212, #1c1c1c);
+}
+
+body.dark-mode .circles li {
+  background: rgba(255, 170, 76, 0.4); /* warm orange glow */
+}
+
+/* Optional: make flags pop in dark mode */
+body.dark-mode .flag {
+  border: 1px solid #444;
 }
