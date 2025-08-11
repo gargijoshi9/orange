@@ -6,7 +6,8 @@
   scroll-behavior: smooth;
 }
 
-body, html {
+body,
+html {
   font-family: 'Segoe UI', sans-serif;
   overflow-x: hidden;
 }
@@ -58,7 +59,7 @@ header {
 }
 
 .site-language {
-   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background: #f68009b4;
   border-radius: 20px;
   color: white;
@@ -123,13 +124,14 @@ header {
 }
 
 .cta-container {
-  margin-top: 1.5rem;
+  margin-top: 20px;
 }
 
 .get-started-button {
   width: 200px;
   height: 50px;
   background: #f67f09;
+  margin-top: 20px;
   color: white;
   font-weight: bold;
   letter-spacing: 0.8px;
@@ -355,7 +357,8 @@ footer {
     right: 20px;
     bottom: 20px;
   }
-   .site-language {
+
+  .site-language {
     font-size: 0.85rem;
     padding: 0.4rem 0.8rem;
     margin-top: 10px;
@@ -365,8 +368,9 @@ footer {
   .logo-image {
     width: 40px;
     height: 40px;
-}
-header{
+  }
+
+  header {
     flex-direction: row;
     align-items: flex-start;
     gap: 0.5rem;
