@@ -1,78 +1,37 @@
 (() => {
   "use strict";
 
-  // --- GERMAN VOCABULARY WITH AUDIO FILES ---
-  const VOCABULARY = [
-    {
-      english: "Dog",
-      german: "Hund",
-      image: "dog.jpg",
-      instruction: "'Hund' (hoond) is the German word for Dog.",
-      audio: "audio/hund.mp3"
-    },
-    {
-      english: "Cat",
-      german: "Katze",
-      image: "cat.jpg",
-      instruction: "'Katze' (kaht-ze) is the German word for Cat.",
-      audio: "audio/katze.mp3"
-    },
-    {
-      english: "Apple",
-      german: "Apfel",
-      image: "apple.jpg",
-      instruction: "'Apfel' (ahp-fel) is the German word for Apple.",
-      audio: "audio/apfel.mp3"
-    },
-    {
-      english: "House",
-      german: "Haus",
-      image: "house.jpg",
-      instruction: "'Haus' (hows) is the German word for House.",
-      audio: "audio/haus.mp3"
-    },
-    {
-      english: "Car",
-      german: "Auto",
-      image: "car.jpg",
-      instruction: "'Auto' (ow-toh) is the German word for Car.",
-      audio: "audio/auto.mp3"
-    },
-    {
-      english: "Bird",
-      german: "Vogel",
-      image: "bird.jpg",
-      instruction: "'Vogel' (foh-gel) is the German word for Bird.",
-      audio: "audio/vogel.mp3"
-    },
-    {
-      english: "Thank You",
-      german: "Danke",
-      image: "thankyou.jpg",
-      instruction: "'Danke' (dahn-ke) is the German way to say Thank You.",
-      audio: "audio/danke.mp3"
-    },
-    {
-      english: "Good Morning",
-      german: "Guten Morgen",
-      image: "goodmorning.jpg",
-      instruction: "'Guten Morgen' (goo-ten mor-gen) is the German way to say Good Morning.",
-      audio: "audio/gutenmorgen.mp3"
-    },
-    {
-      english: "School",
-      german: "Schule",
-      image: "school.jpg",
-      instruction: "'Schule' (shoo-le) is the German word for School.",
-      audio: "audio/schule.mp3"
-    },
-    {
-      english: "Sorry",
-      german: "Entschuldigung",
-      image: "sorry.jpg",
-      instruction: "'Entschuldigung' (ent-shool-dee-goong) is the German way to say Sorry.",
-      audio: "audio/entschuldigung.mp3"
+  // --- Change header & button text to German when DOM is ready ---
+  document.addEventListener("DOMContentLoaded", () => {
+    // Header title
+    const headerTitle = document.querySelector("header h1");
+    if (headerTitle) {
+      headerTitle.textContent = "Learn German basics"; 
     }
+
+    // Nav button aria-labels
+    document.getElementById("prevBtn")?.setAttribute("aria-label", "Vorheriges Wort");
+    document.getElementById("nextBtn")?.setAttribute("aria-label", "Nächstes Wort");
+
+    // Action buttons
+    const homeBtn = document.getElementById("homeBtn");
+    if (homeBtn) homeBtn.textContent = "Back to home page"; 
+    const continueBtn = document.getElementById("continueBtn");
+    if (continueBtn) continueBtn.textContent = "Continue to game"; 
+  });
+
+  // --- GERMAN VOCABULARY ---
+  const VOCABULARY = [
+    { english: "Dog", german: "Hund", image: "dog.jpg", instruction: "'Hund' ist das deutsche Wort für Hund." },
+    { english: "Cat", german: "Katze", image: "cat.jpg", instruction: "'Katze' ist das deutsche Wort für Katze." },
+    { english: "Apple", german: "Apfel", image: "apple.jpg", instruction: "'Apfel' ist das deutsche Wort für Apfel." },
+    { english: "House", german: "Haus", image: "house.jpg", instruction: "'Haus' ist das deutsche Wort für Haus." },
+    { english: "Car", german: "Auto", image: "car.jpg", instruction: "'Auto' ist das deutsche Wort für Auto." },
+    { english: "Good Morning", german: "Guten Morgen", image: "goodmorning.jpg", instruction: "'Guten Morgen' sagt man auf Deutsch am Morgen." },
+    { english: "Thank You", german: "Danke", image: "thankyou.jpg", instruction: "'Danke' ist das deutsche Wort für Danke." },
+    { english: "Sorry", german: "Entschuldigung", image: "sorry.jpg", instruction: "'Entschuldigung' ist das deutsche Wort für Sorry." },
+    { english: "School", german: "Schule", image: "school.jpg", instruction: "'Schule' ist das deutsche Wort für Schule." },
+    { english: "Bird", german: "Vogel", image: "bird.jpg", instruction: "'Vogel' ist das deutsche Wort für Vogel." }
   ];
 
   const carouselContainer = document.getElementById("carouselContainer");
@@ -84,7 +43,20 @@
   let currentIndex = 0;
   let isAnimating = false;
 
-  // THEME SWITCH
+  // === TEXT-TO-SPEECH FUNCTION ===
+  function speakText(text) {
+    if (!("speechSynthesis" in window)) {
+      alert("Ihr Browser unterstützt keine Sprachausgabe.");
+      return;
+    }
+    window.speechSynthesis.cancel(); // Stop any previous speech
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'de-DE'; // German voice if available
+    utterance.rate = 0.9; // Slightly slower for clarity
+    speechSynthesis.speak(utterance);
+  }
+
+  // Initialize dark/light theme
   function initTheme() {
     const savedTheme = localStorage.getItem("theme") || "light";
     document.body.classList.toggle("dark-mode", savedTheme === "dark");
@@ -97,37 +69,39 @@
     });
   }
 
-  // CREATE CARD WITH AUDIO BUTTON
+  // Create a card element — audio now from speech synthesis
   function createCard(vocab) {
     const card = document.createElement("div");
     card.className = "card";
     card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-label", `Vocabulary: ${vocab.english}, German: ${vocab.german}`);
+    card.setAttribute("aria-label", `Vokabel: ${vocab.english}, Deutsch: ${vocab.german}. Drücke die Wiedergabetaste, um die Aussprache zu hören.`);
 
     card.innerHTML = `
-      <img src="${vocab.image}" alt="${vocab.english} image" />
+      <img src="${vocab.image}" alt="${vocab.english} Bild" />
       <div class="word-english">${vocab.english}</div>
       <div class="word-german">${vocab.german}</div>
-      <button class="audio-btn" aria-label="Play pronunciation for ${vocab.german}">🔊</button>
+      <button class="audio-btn" aria-label="Aussprache von ${vocab.german} abspielen">🔊</button>
       <div class="word-instruction">${vocab.instruction}</div>
     `;
 
-    // Add audio play event
+    // Play synthesized audio on click
     const audioBtn = card.querySelector(".audio-btn");
     audioBtn.addEventListener("click", () => {
-      const audio = new Audio(vocab.audio);
-      audio.play();
+      speakText(vocab.german);
     });
 
     return card;
   }
 
-  // SHOW CARD
+  // Show card at current index
   function showCard(newIndex, direction) {
     if (direction !== null && (isAnimating || newIndex === currentIndex)) return;
 
     if (newIndex < 0) newIndex = VOCABULARY.length - 1;
     if (newIndex >= VOCABULARY.length) newIndex = 0;
+
+    // Stop ongoing speech
+    window.speechSynthesis.cancel();
 
     if (direction === null) {
       carouselContainer.innerHTML = "";
@@ -141,6 +115,7 @@
       return;
     }
 
+    // Animated change
     isAnimating = true;
     const outgoingCard = carouselContainer.querySelector(".card");
     const incomingCard = createCard(VOCABULARY[newIndex]);
@@ -168,33 +143,22 @@
     }, { once: true });
   }
 
-  // UPDATE PROGRESS
   function updateProgress() {
-    progressIndicator.textContent = `Word ${currentIndex + 1} of ${VOCABULARY.length}`;
+    progressIndicator.textContent = `Wort ${currentIndex + 1} von ${VOCABULARY.length}`;
   }
 
-  // SETUP NAVIGATION
   function setupNavigation() {
-    prevBtn.addEventListener("click", () => {
-      showCard(currentIndex - 1, "prev");
-    });
-    nextBtn.addEventListener("click", () => {
-      showCard(currentIndex + 1, "next");
-    });
+    prevBtn.addEventListener("click", () => showCard(currentIndex - 1, "prev"));
+    nextBtn.addEventListener("click", () => showCard(currentIndex + 1, "next"));
   }
 
-  // INIT APP
   function init() {
     initTheme();
     showCard(currentIndex, null);
     setupNavigation();
 
-    document.getElementById("homeBtn").addEventListener("click", () => {
-      window.location.href = "index.html";
-    });
-    document.getElementById("continueBtn").addEventListener("click", () => {
-      window.location.href = "main-german.html";
-    });
+    document.getElementById("homeBtn").addEventListener("click", () => window.location.href = "index.html");
+    document.getElementById("continueBtn").addEventListener("click", () => window.location.href = "main-german.html");
   }
 
   window.addEventListener("DOMContentLoaded", init);

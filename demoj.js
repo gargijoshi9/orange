@@ -20,18 +20,18 @@
     if (continueBtn) continueBtn.textContent = "Continue to Game ➡"; 
   });
 
-  // --- JAPANESE VOCABULARY (ROMAJI) WITH AUDIO FILES ---
+  // --- JAPANESE VOCABULARY (ROMAJI) ---
   const VOCABULARY = [
-    { english: "Dog", japanese: "Inu", image: "dog.jpg", instruction: "'Inu' is the Japanese word for Dog.", audio: "audio/inu.mp3" },
-    { english: "Cat", japanese: "Neko", image: "cat.jpg", instruction: "'Neko' is the Japanese word for Cat.", audio: "audio/neko.mp3" },
-    { english: "Apple", japanese: "Ringo", image: "apple.jpg", instruction: "'Ringo' is the Japanese word for Apple.", audio: "audio/ringo.mp3" },
-    { english: "House", japanese: "Ie", image: "house.jpg", instruction: "'Ie' is the Japanese word for House.", audio: "audio/ie.mp3" },
-    { english: "Car", japanese: "Kuruma", image: "car.jpg", instruction: "'Kuruma' is the Japanese word for Car.", audio: "audio/kuruma.mp3" },
-    { english: "Good Morning", japanese: "Ohayou", image: "goodmorning.jpg", instruction: "'Ohayou' is the Japanese way to say Good Morning.", audio: "audio/ohayou.mp3" },
-    { english: "Thank You", japanese: "Arigatou", image: "thankyou.jpg", instruction: "'Arigatou' is the Japanese way to say Thank You.", audio: "audio/arigatou.mp3" },
-    { english: "Sorry", japanese: "Sumimasen", image: "sorry.jpg", instruction: "'Sumimasen' is the Japanese way to say Sorry.", audio: "audio/sumimasen.mp3" },
-    { english: "School", japanese: "Gakkou", image: "school.jpg", instruction: "'Gakkou' is the Japanese word for School.", audio: "audio/gakkou.mp3" },
-    { english: "Bird", japanese: "Tori", image: "bird.jpg", instruction: "'Tori' is the Japanese word for Bird.", audio: "audio/tori.mp3" }
+    { english: "Dog", japanese: "Inu", image: "dog.jpg", instruction: "'Inu' is the Japanese word for Dog." },
+    { english: "Cat", japanese: "Neko", image: "cat.jpg", instruction: "'Neko' is the Japanese word for Cat." },
+    { english: "Apple", japanese: "Ringo", image: "apple.jpg", instruction: "'Ringo' is the Japanese word for Apple." },
+    { english: "House", japanese: "Ie", image: "house.jpg", instruction: "'Ie' is the Japanese word for House." },
+    { english: "Car", japanese: "Kuruma", image: "car.jpg", instruction: "'Kuruma' is the Japanese word for Car." },
+    { english: "Good Morning", japanese: "Ohayou", image: "goodmorning.jpg", instruction: "'Ohayou' is the Japanese way to say Good Morning." },
+    { english: "Thank You", japanese: "Arigatou", image: "thankyou.jpg", instruction: "'Arigatou' is the Japanese way to say Thank You." },
+    { english: "Sorry", japanese: "Sumimasen", image: "sorry.jpg", instruction: "'Sumimasen' is the Japanese way to say Sorry." },
+    { english: "School", japanese: "Gakkou", image: "school.jpg", instruction: "'Gakkou' is the Japanese word for School." },
+    { english: "Bird", japanese: "Tori", image: "bird.jpg", instruction: "'Tori' is the Japanese word for Bird." }
   ];
 
   const carouselContainer = document.getElementById("carouselContainer");
@@ -42,6 +42,19 @@
 
   let currentIndex = 0;
   let isAnimating = false;
+
+  // === TEXT-TO-SPEECH FUNCTION ===
+  function speakText(text) {
+    if (!("speechSynthesis" in window)) {
+      alert("Your browser does not support speech synthesis.");
+      return;
+    }
+    window.speechSynthesis.cancel(); // stop any previous speech
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ja-JP'; // Use Japanese voice if available
+    utterance.rate = 0.9; // slightly slower for learning
+    speechSynthesis.speak(utterance);
+  }
 
   // Initialize dark/light theme
   function initTheme() {
@@ -56,12 +69,12 @@
     });
   }
 
-  // Create a card element from vocabulary item — includes audio button
+  // Create a card element — audio now from speech synthesis
   function createCard(vocab) {
     const card = document.createElement("div");
     card.className = "card";
     card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-label", `Vocabulary: ${vocab.english}, Japanese (romaji): ${vocab.japanese}`);
+    card.setAttribute("aria-label", `Vocabulary: ${vocab.english}, Japanese (romaji): ${vocab.japanese}. Press play to hear pronunciation.`);
 
     card.innerHTML = `
       <img src="${vocab.image}" alt="${vocab.english} image" />
@@ -71,11 +84,10 @@
       <div class="word-instruction">${vocab.instruction}</div>
     `;
 
-    // Play audio on click
+    // Play synthesized audio on click
     const audioBtn = card.querySelector(".audio-btn");
     audioBtn.addEventListener("click", () => {
-      if (vocab.audio) new Audio(vocab.audio).play();
-      else alert("No audio file available for this word.");
+      speakText(vocab.japanese);
     });
 
     return card;
@@ -87,6 +99,9 @@
 
     if (newIndex < 0) newIndex = VOCABULARY.length - 1;
     if (newIndex >= VOCABULARY.length) newIndex = 0;
+
+    // Stop any ongoing speech
+    window.speechSynthesis.cancel();
 
     if (direction === null) {
       carouselContainer.innerHTML = "";
