@@ -6,7 +6,7 @@
     // Header title
     const headerTitle = document.querySelector("header h1");
     if (headerTitle) {
-      headerTitle.textContent = "Learn German basics"; 
+      headerTitle.textContent = "Learn German Basics"; 
     }
 
     // Nav button aria-labels

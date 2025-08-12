@@ -1040,25 +1040,29 @@ body.dark-mode {
 /* Header */
 body.dark-mode header h1,
 body.dark-mode header .title {
-  color: #ffaa4c;
+  color: #fb8b03;
 }
 
 /* Back Button */
 body.dark-mode .back {
-  background-color: #ffaa4c;
+  background-color: #f7941d;
 }
 body.dark-mode .back:hover {
-  background-color: #ffb866;
+  background-color: #f58a07;
+}
+
+body.dark-mode .back:active {
+  background-color: #c76f04;
 }
 
 /* HUD */
 body.dark-mode .hud {
-  color: #ffaa4c;
+  color: #f7941d;
 }
 body.dark-mode .xp-bar,
 body.dark-mode .hearts {
   background: #2a2a2a;
-  color: #ffaa4c;
+  color: #f7941d;
   box-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
@@ -1069,7 +1073,7 @@ body.dark-mode .level-circle-outer {
   box-shadow: 0 5px 20px rgba(0,0,0,.5);
 }
 body.dark-mode .level-star {
-  color: #ffaa4c;
+  color: #f7941d;
   text-shadow: 0 2px 6px rgba(255, 170, 76, 0.6);
 }
 body.dark-mode .level-label {
@@ -1164,11 +1168,11 @@ body.dark-mode .feedback-popup.negative {
 body.dark-mode .audio-btn {
   border-color: #ffaa4c;
   color: #ffaa4c;
-  background: #1f1f1f;
+  background: #fb8b03;
 }
 body.dark-mode .audio-btn:hover,
 body.dark-mode .audio-btn:focus {
-  background: #ffaa4c;
+  background: #f58a07;
   color: #121212;
 }
 
