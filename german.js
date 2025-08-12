@@ -174,6 +174,42 @@ function ttsSpeak(text, lang='de-DE') {
 }
 window.ttsSpeak = ttsSpeak;
 
+// NEW feature 
+const MAX_HEARTS = 3;
+let heartRegenTime = 25; // seconds 
+let heartRegenTimer;
+
+// Heart Regeneration 
+function startHeartRegen() {
+    
+    if (heartRegenTimer) return;
+
+    let timeLeft = heartRegenTime;
+
+    heartRegenTimer = setInterval(() => {
+        timeLeft--;
+        
+        if (timeLeft <= 0) {
+            if (hearts < MAX_HEARTS) {
+                hearts++;
+                updateHUD();
+                
+                if (hearts >= MAX_HEARTS) { //heart full check 
+                    clearInterval(heartRegenTimer);
+                    heartRegenTimer = null;
+                } else {
+                    
+                    timeLeft = heartRegenTime;
+                }
+            } else {
+                clearInterval(heartRegenTimer);
+                heartRegenTimer = null; //timer stop 
+            }
+        }
+    }, 1000);
+}
+
+
 // ----------- UI FLOW -------------
 function startApp() {
   xp = 0; hearts = 3; currentLevel = 0; questionIndex = 0;
@@ -244,7 +280,10 @@ function afterAnswered(isCorrect, correctAnswerText='') {
   if (isCorrect) {
     xp += 10;
   } else {
-    hearts--;
+    if (hearts > 0) { // updated here 
+        hearts--;
+        startHeartRegen();
+    }
   }
   updateHUD();
   playFeedback(isCorrect);
@@ -253,10 +292,15 @@ function afterAnswered(isCorrect, correctAnswerText='') {
   showFeedbackPopup(msg, isCorrect);
 
   if (hearts <= 0) {
-    setTimeout(() => {
-      gameOverSound.play();
-      showGameOver();
-    }, 2000);
+  // Save the spot where they lost
+  sessionStorage.setItem("resumeLevel", currentLevel);      // updated here 
+  sessionStorage.setItem("resumeQuestion", questionIndex);
+  setTimeout(() => {
+    gameOverSound.play();
+    showGameOver();
+  }, 2000);
+
+
   } else {
     setTimeout(() => {
       questionIndex++;
@@ -516,16 +560,63 @@ function stopConfetti() {
   clearInterval(confettiIntervalId);
 }
 
-
 function showGameOver() {
+  let nextHeartIn = heartRegenTime; // seconds until regeneration starts
+
   mainContent.innerHTML = `
     <div class="gameover-container animated-fade-in">
       <div class="feedback negative big-feedback">Game Over <br/> Out of hearts!</div>
       <div class="xp-scored big-summary">XP scored: ${xp}</div>
-      <button class="level-btn" onclick="startApp()">Back to main menu</button>
+      <div style="font-size:1.2rem; text-align: center;">Please wait for a heart to regenerate if you want to continue...</div>
+      <div id="countdown" style="font-size:2rem; margin-top:10px;">
+        Next heart in: ${nextHeartIn}s
+      </div>
+      <div style="margin-top:20px;">
+        <button class="level-btn" onclick="startApp()">Back to main menu</button>
+      </div>
     </div>
   `;
+
+  
+  startHeartRegen();
+
+ 
+  let countdownInterval = setInterval(() => {
+    nextHeartIn--;
+    const cDownEl = document.getElementById("countdown");
+    if (cDownEl) {
+      cDownEl.textContent = `Next heart in: ${nextHeartIn}s`;
+    }
+    // Reset timer for next heart
+    if (nextHeartIn <= 0) {
+      nextHeartIn = heartRegenTime;
+    }
+  }, 1000);
+
+  // Check if heart regenerated and continue
+ let waitCheck = setInterval(() => {
+  if (hearts > 0) {
+    clearInterval(waitCheck);
+    clearInterval(countdownInterval);
+
+    // Get the saved position
+    let resumeLevel = parseInt(sessionStorage.getItem("resumeLevel"), 10);
+    let resumeQ = parseInt(sessionStorage.getItem("resumeQuestion"), 10);
+
+    if (!isNaN(resumeLevel) && !isNaN(resumeQ)) {
+      currentLevel = resumeLevel;
+      questionIndex = resumeQ;
+      updateHUD();
+      showQuestion(); // Resume exactly where player lost
+    } else {
+      // Fallback if somehow not saved
+      goToLevel(currentLevel);
+    }
+  }
+}, 1000);
+
 }
+
 
 // Initialize
 updateHUD();
