@@ -493,3 +493,171 @@ footer {
     margin-left: 0.25rem;
   }
 }
+
+/* ========================== EXTRA RESPONSIVENESS ========================== */
+
+/* --- Tablet & Small Laptops (≤ 1024px) --- */
+@media (max-width: 1024px) {
+  .main-section {
+    flex-direction: column-reverse; /* Put text above image for better flow */
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .fruits {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .fruits img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .heading-1,
+  .the-free-fun-and-effective-way-to,
+  .learn-a-language,
+  .godemo,
+  .godemos {
+    text-align: center;
+  }
+}
+
+/* --- Mobile Phones (≤ 600px) --- */
+@media (max-width: 600px) {
+  body {
+    font-size: 15px; /* slightly smaller base font */
+  }
+
+  .brand-name {
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    text-align: center;
+  }
+
+  /* Hero section image */
+  .fruits {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .fruits img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Center text and CTAs */
+  .main-section {
+    padding: 1rem;
+    gap: 15px;
+  }
+
+  .heading-1,
+  .the-free-fun-and-effective-way-to,
+  .learn-a-language,
+  .godemo,
+  .godemos {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  .get-started-button {
+    width: 90%;
+    max-width: 250px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* --- Very Small Devices (≤ 400px) --- */
+@media (max-width: 400px) {
+  .fruits {
+    max-width: 250px;
+  }
+  .brand-name {
+    font-size: 1.8rem;
+  }
+}
+
+/* --- Mobile & Tablet Fixes for Hero Section & Site Language --- */
+@media (max-width: 1024px) {
+  /* Make site-language visible */
+  .site-language {
+    transform: none !important;   /* Remove big horizontal shift */
+    position: relative;           /* Keep it inline */
+    margin-top: 0.5rem;
+    margin-right: 0;               /* Reset unnecessary margin */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* HERO section: image above text */
+  .main-section {
+    flex-direction: column;        /* Image above text */
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 1.5rem 1rem;
+  }
+
+  /* Move image to the very top under header */
+  .fruits {
+    order: -1;                     /* Push image above text */
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .fruits img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Center headings and buttons */
+  .heading-1,
+  .the-free-fun-and-effective-way-to,
+  .learn-a-language,
+  .godemo,
+  .godemos {
+    text-align: center;
+  }
+  .get-started-button {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-name {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    gap: 0.5rem;
+  }
+
+  /* Keep site-language centered below logo & brand on mobile */
+  .site-language {
+    order: 3;
+    margin-top: 0.5rem;
+  }
+}
+

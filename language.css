@@ -397,3 +397,146 @@ body.dark-mode .circles li {
   background: rgba(250, 158, 54, 0.555); /* warm orange glow */
 }
 
+/* ====== RESPONSIVE ADJUSTMENTS ====== */
+
+/* === Mobile Portrait (≤ 480px) === */
+@media (max-width: 480px) {
+
+  /* Header layout */
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .brand-name {
+    font-size: 2.2rem;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .logo {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .logo-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .site-language {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    margin: 0.5rem auto 0;
+    transform: none; /* Remove large translate for smaller screens */
+  }
+
+  /* Dark mode toggle icon adjustment */
+  #darkModeToggle {
+    position: static;
+    transform: none;
+    margin-top: 0.5rem;
+  }
+
+  /* Back button smaller and closer to edge */
+  .back {
+    top: 60px;
+    left: 8px;
+    padding: 4px;
+  }
+  .back img {
+    height: 28px;
+    width: 28px;
+  }
+
+  /* Page heading */
+  h1 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Language grid — stack more tightly */
+  .language-grid {
+    gap: 1.5rem;
+  }
+  .language-card {
+    width: 120px;
+    padding: 0.8rem;
+  }
+  .flag {
+    width: 48px;
+    height: 36px;
+  }
+  .lang-name {
+    font-size: 1rem;
+  }
+}
+
+/* === Tablet (481px – 768px) === */
+@media (max-width: 768px) {
+
+  header {
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+
+  .brand-name {
+    font-size: 2.8rem;
+  }
+
+  .logo-image {
+    width: 45px;
+    height: 45px;
+  }
+
+  .site-language {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    transform: none; /* prevent overflow on tablet */
+  }
+
+  /* Back button resize */
+  .back {
+    top: 80px;
+    left: 16px;
+  }
+  .back img {
+    height: 32px;
+    width: 32px;
+  }
+
+  /* Heading */
+  h1 {
+    font-size: 2.6rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Grid spacing */
+  .language-grid {
+    gap: 2.5rem;
+  }
+  .language-card {
+    width: 140px;
+    padding: 1rem;
+  }
+}
+
+/* === Large Desktop (≥ 1024px) === */
+@media (min-width: 1024px) {
+  .brand-name {
+    font-size: 4rem;
+  }
+  .language-card {
+    width: 160px;
+  }
+  .flag {
+    width: 64px;
+    height: 48px;
+  }
+}

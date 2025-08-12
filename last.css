@@ -268,3 +268,100 @@ body.dark-mode .confetti-piece {
   opacity: 0.9;
   --confetti-color: #ffaa4c;
 }
+
+/* ===== RESPONSIVE STYLES ===== */
+
+/* --- Mobile Portrait & Small Screens (≤ 480px) --- */
+@media (max-width: 480px) {
+  
+  /* Reduce large heading sizes */
+  h1 {
+    font-size: 3.5rem;     /* was 9rem */
+    letter-spacing: -2px;  /* less compression */
+  }
+
+  .container h2 {
+    font-size: 1.6rem;     /* was 3rem */
+    margin-top: 0.8rem;
+  }
+
+  /* Center and stack buttons vertically */
+  .button-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 10px;
+  }
+
+  .left-btn,
+  .right-btn {
+    width: 90%;
+    max-width: 280px;
+    font-size: 1rem;
+    padding: 12px 16px;
+    margin-top: 0;
+  }
+
+  /* Dark mode toggle moves in */
+  #darkModeToggle {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  /* Confetti pieces smaller for less clutter */
+  .confetti-piece {
+    width: 6px;
+    height: 12px;
+  }
+}
+
+/* --- Tablet (481px → 768px) --- */
+@media (max-width: 768px) {
+
+  /* Moderate heading scale */
+  h1 {
+    font-size: 5rem;
+    letter-spacing: -4px;
+  }
+
+  .container h2 {
+    font-size: 2.2rem;
+  }
+
+  /* Buttons more compact but still side-by-side unless they wrap */
+  .button-container {
+    justify-content: center;
+    gap: 1rem;
+    padding: 15px;
+    flex-wrap: wrap;
+  }
+
+  .left-btn,
+  .right-btn {
+    font-size: 1.05rem;
+    padding: 12px 20px;
+  }
+
+  /* Dark mode toggle slightly smaller */
+  #darkModeToggle {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+}
+
+/* --- Large Desktop (≥ 1024px) --- */
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 9rem;
+    letter-spacing: -10px;
+  }
+  .container h2 {
+    font-size: 3rem;
+  }
+}
+

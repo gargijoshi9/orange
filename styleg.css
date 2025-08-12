@@ -292,3 +292,168 @@ body.dark-mode {
 .audio-btn:active {
   background-color: var(--btn-active-bg);
 }
+
+
+/* ==== Responsive Adjustments ==== */
+
+/* Small Screens (≤ 480px) — mobile portrait */
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 0.8rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .carousel-container {
+    width: 95%;
+    height: auto;
+    min-height: 320px;
+  }
+
+  .card img {
+    max-height: 140px;
+  }
+
+  .word-english {
+    font-size: 1.2rem;
+  }
+
+  .word-german {
+    font-size: 1.6rem;
+  }
+
+  /* Navigation buttons inside for small screen */
+  .nav-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1.5rem;
+    top: auto;
+    bottom: 1rem;
+    transform: none;
+  }
+  .left-btn {
+    left: 1rem;
+  }
+  .right-btn {
+    right: 1rem;
+  }
+
+  /* Action buttons stack vertically */
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+  }
+  .action-buttons button {
+    width: 90%;
+    max-width: 280px;
+  }
+
+  .back {
+    top: 80px;
+    left: 10px;
+  }
+}
+
+/* Medium Screens (481px → 768px) — tablets */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  .carousel-container {
+    width: 90%;
+    height: auto;
+    min-height: 360px;
+  }
+
+  .card img {
+    max-height: 160px;
+  }
+
+  /* Navigation buttons closer */
+  .left-btn {
+    left: 1rem;
+  }
+  .right-btn {
+    right: 1rem;
+  }
+
+  .action-buttons {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+/* Large Screens (≥ 1024px) — desktops */
+@media (min-width: 1024px) {
+  .carousel-container {
+    width: 420px;
+    height: 500px;
+  }
+  .card img {
+    max-height: 200px;
+  }
+}
+
+/* ===== Back Button Responsiveness ===== */
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .back {
+    top: 60px;        /* Move it higher so it’s not too far down */
+    left: 8px;        /* Closer to the screen edge */
+    padding: 4px;
+  }
+
+  .back img {
+    height: 32px;     /* Slightly smaller icon */
+    width: 32px;
+  }
+}
+
+/* Tablet (481px → 768px) */
+@media (max-width: 768px) {
+  .back {
+    top: 50px;
+    left: 12px;
+    padding: 5px;
+  }
+
+  .back img {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .back {
+    top: 120px;  /* Original value */
+    left: 40px;
+  }
+}
+
+/* ===== Progress Indicator Adjustment ===== */
+.progress-indicator {
+  bottom: 2rem; /* Push it down a little from original (was 3rem) */
+}
+
+@media (max-width: 480px) {
+  .progress-indicator {
+    bottom: 1rem; /* Closer to bottom on small screens */
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .progress-indicator {
+    bottom: 2.5rem; /* Slight push down for bigger screens */
+  }
+}
